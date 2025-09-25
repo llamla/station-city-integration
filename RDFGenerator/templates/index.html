@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>站城融合立体网络空间数据的RDF生成器</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <h1 style="text-align:center; color: white;">语义生成工具</h1>  <!-- 添加标题 -->
+        <button onclick="showUsageInstructions()">使用说明</button>
+        <button onclick="showRdfGeneration()">RDF生成</button>
+    </div>
+
+    <div class="container">
+        <!-- 主内容区 -->
+        <div class="main-content" id="usage-instructions">
+            <h1 style="text-align:center">站城融合立体网络空间数据的RDF生成器使用说明</h1>
+            <h3>一、平台目的</h3>
+            <p style="text-indent: 2em;font-size: 16px;line-height: 1.6">站城融合立体网络空间涉及四类传感器数据，分别为结构、环境、人流以及能耗数据。
+                为了实现这些非结构化数据的语义统一，本平台构建了一个领域本体，并在此基础上，
+                将各类CSV数据转换为RDF格式。生成的RDF数据可以存储到图数据库中，形成知识图谱，提升数据整合的质量。</p>
+            <h3>二、操作步骤</h3>
+            <p>请按照以下步骤进行操作：</p>
+            <table>
+                <tr>
+                    <td>1. 上传 CSV 文件</td>
+                    <td>2. 点击转换为 RDF</td>
+                    <td>3. 下载生成的 RDF 文件</td>
+                </tr>
+            </table>
+            <h3>三、注意事项</h3>
+            <p>确保上传的 CSV 表格属性以及数据类型与下表一致（属性顺序随意）。</p>
+            <table>
+                <tr>
+                    <th>sensor_id</th>
+                    <th>last_maintenance_time</th>
+                    <th>maintenance_cycle</th>
+                    <th>sensor_type</th>
+                    <th>location</th>
+                    <th>sensor_status</th>
+                </tr>
+                <tr>
+                    <th>HJ001</th>
+                    <th>2024-10-25T09:45:00</th>
+                    <th>240</th>
+                    <th>Temperature Sensor</th>
+                    <th>Waiting Hall</th>
+                    <th>Active</th>
+                </tr>
+            </table>
+            <p style="margin-bottom: 5px">(续)</p>
+            <table>
+                <tr>
+                    <th>observation_id</th>
+                    <th>observes</th>
+                    <th>result_time</th>
+                    <th>alarm_status</th>
+                    <th>result_value</th>
+                    <th>result_unit</th>
+                </tr>
+                <tr>
+                    <th>obser_1</th>
+                    <th>Temperature</th>
+                    <th>2024-11-21T12:00:00</th>
+                    <th>0</th>
+                    <th>26.91</th>
+                    <th>Celsius</th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="main-content" id="rdf-generation">
+            <h1 style="text-align: center; margin: 45px 10px;font-size: 35px">站城融合立体网络空间数据的RDF生成器</h1>
+            <div class="boxes">
+
+                <!-- 环境数据转 RDF -->
+                <div class="box">
+                    <h3>环境数据转 RDF</h3>
+                    <form id="convertForm1" action="{{ url_for('convert', type='env') }}" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="env_file" required>
+                        <button type="submit">上传并转换为 RDF</button>
+                    </form>
+                </div>
+
+                <!-- 结构数据转 RDF -->
+                <div class="box">
+                    <h3>结构数据转 RDF</h3>
+                    <form id="convertForm2" action="{{ url_for('convert', type='struct') }}" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="struct_file" required>
+                        <button type="submit">上传并转换为 RDF</button>
+                    </form>
+                </div>
+
+                <!-- 人流数据转 RDF -->
+                <div class="box">
+                    <h3>人流数据转 RDF</h3>
+                    <form id="convertForm3" action="{{ url_for('convert', type='flow') }}" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="flow_file" required>
+
+                        <button type="submit">上传并转换为 RDF</button>
+                    </form>
+                </div>
+
+                <!-- 能耗数据转 RDF -->
+                <div class="box">
+                    <h3>能耗数据转 RDF</h3>
+                    <form id="convertForm4" action="{{ url_for('convert', type='energy') }}" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="energy_file" required>
+                        <button type="submit">上传并转换为 RDF</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 提交表单时触发 AJAX 请求
+        $('#convertForm1').submit(function(event) {
+            event.preventDefault();  // 防止表单默认提交行为
+
+            // 获取上传的文件
+            var formData = new FormData();
+            fileInput = $(this).find('input[type="file"]')[0];
+            formData.append('env_file', fileInput.files[0]);
+
+            // 发送 AJAX 请求到 Flask 后端
+            fetch('/convert/env', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 判断请求结果
+                if (data.status === 'error') {
+                    alert('错误: ' + data.message);  // 显示错误消息
+                } else if (data.status === 'success') {
+                    alert(data.message);  // 显示成功消息
+                    // 提供文件下载链接
+                    var downloadLink = document.createElement('a');
+                    downloadLink.href = data.file_url;
+                    downloadLink.textContent = '点击下载文件';
+                    // 设置下载链接的样式
+                    downloadLink.style.position = 'absolute';  // 使用绝对定位
+                    downloadLink.style.top = '320px';  // 距离页面顶部 100px
+                    downloadLink.style.left = '60%';  // 距离页面左边 50%
+                    downloadLink.style.transform = 'translateX(-50%)';  // 将元素水平居中
+                    document.body.appendChild(downloadLink);  // 将下载链接添加到页面中
+                }
+            })
+            .catch(error => {
+                alert('网络错误，请稍后再试。');
+            });
+        });
+
+        // 提交表单时触发 AJAX 请求
+        $('#convertForm2').submit(function(event) {
+            event.preventDefault();  // 防止表单默认提交行为
+
+            // 获取上传的文件
+            var formData = new FormData();
+            fileInput = $(this).find('input[type="file"]')[0];
+            formData.append('struct_file', fileInput.files[0]);
+
+            // 发送 AJAX 请求到 Flask 后端
+            fetch('/convert/struct', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 判断请求结果
+                if (data.status === 'error') {
+                    alert('错误: ' + data.message);  // 显示错误消息
+                } else if (data.status === 'success') {
+                    alert(data.message);  // 显示成功消息
+                    // 提供文件下载链接
+                    var downloadLink = document.createElement('a');
+                    downloadLink.href = data.file_url;
+                    downloadLink.textContent = '点击下载文件';
+                    // 设置下载链接的样式
+                    downloadLink.style.position = 'absolute';  // 使用绝对定位
+                    downloadLink.style.top = '480px';  // 距离页面顶部 100px
+                    downloadLink.style.left = '60%';  // 距离页面左边 50%
+                    downloadLink.style.transform = 'translateX(-50%)';  // 将元素水平居中
+                    document.body.appendChild(downloadLink);  // 将下载链接添加到页面中
+                }
+            })
+            .catch(error => {
+                alert('网络错误，请稍后再试。');
+            });
+        });
+
+        // 提交表单时触发 AJAX 请求
+        $('#convertForm3').submit(function(event) {
+            event.preventDefault();  // 防止表单默认提交行为
+
+            // 获取上传的文件
+            var formData = new FormData();
+            fileInput = $(this).find('input[type="file"]')[0];
+            formData.append('flow_file', fileInput.files[0]);
+
+            // 发送 AJAX 请求到 Flask 后端
+            fetch('/convert/flow', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 判断请求结果
+                if (data.status === 'error') {
+                    alert('错误: ' + data.message);  // 显示错误消息
+                } else if (data.status === 'success') {
+                    alert(data.message);  // 显示成功消息
+                    // 提供文件下载链接
+                    var downloadLink = document.createElement('a');
+                    downloadLink.href = data.file_url;
+                    downloadLink.textContent = '点击下载文件';
+                    // 设置下载链接的样式
+                    downloadLink.style.position = 'absolute';  // 使用绝对定位
+                    downloadLink.style.top = '680px';  // 距离页面顶部 100px
+                    downloadLink.style.left = '60%';  // 距离页面左边 50%
+                    downloadLink.style.transform = 'translateX(-50%)';  // 将元素水平居中
+                    document.body.appendChild(downloadLink);  // 将下载链接添加到页面中
+                }
+            })
+            .catch(error => {
+                alert('网络错误，请稍后再试。');
+            });
+        });
+
+        // 提交表单时触发 AJAX 请求
+        $('#convertForm4').submit(function(event) {
+            event.preventDefault();  // 防止表单默认提交行为
+
+            // 获取上传的文件
+            var formData = new FormData();
+            fileInput = $(this).find('input[type="file"]')[0];
+            formData.append('energy_file', fileInput.files[0]);
+
+            // 发送 AJAX 请求到 Flask 后端
+            fetch('/convert/energy', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 判断请求结果
+                if (data.status === 'error') {
+                    alert('错误: ' + data.message);  // 显示错误消息
+                } else if (data.status === 'success') {
+                    alert(data.message);  // 显示成功消息
+                    // 提供文件下载链接
+                    var downloadLink = document.createElement('a');
+                    downloadLink.href = data.file_url;
+                    downloadLink.textContent = '点击下载文件';
+                    // 设置下载链接的样式
+                    downloadLink.style.position = 'absolute';  // 使用绝对定位
+                    downloadLink.style.top = '880px';  // 距离页面顶部 100px
+                    downloadLink.style.left = '60%';  // 距离页面左边 50%
+                    downloadLink.style.transform = 'translateX(-50%)';  // 将元素水平居中
+                    document.body.appendChild(downloadLink);  // 将下载链接添加到页面中
+                }
+            })
+            .catch(error => {
+                alert('网络错误，请稍后再试。');
+            });
+        });
+    </script>
+    <script>
+        // 显示使用说明
+        function showUsageInstructions() {
+            document.getElementById('usage-instructions').style.display = 'block';
+            document.getElementById('rdf-generation').style.display = 'none';
+        }
+
+        // 显示 RDF 生成
+        function showRdfGeneration() {
+            document.getElementById('rdf-generation').style.display = 'block';
+            document.getElementById('usage-instructions').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

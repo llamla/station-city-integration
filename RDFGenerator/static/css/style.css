@@ -1,0 +1,143 @@
+/* 基本样式 */
+        body {
+            font-family: Arial, sans-serif;
+            background:url("/static/images/background.jpg");
+            background-size: 100%,70%;
+            background-position: calc(100% + 250px) 0;
+            background-repeat: no-repeat;
+            margin: 30px;
+            padding: 0;
+            display: flex;
+            justify-content: center;     /* 水平居中 */
+            align-items: center;
+        }
+
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+        }
+        .container {
+            margin-left: 0;  /* 向右移动 300px */
+            width: 100%;
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* 侧边栏样式 */
+        .sidebar {
+            position: absolute;
+            left: 0;  /* 距离页面左边 0 */
+            top: 0;   /* 距离页面顶部 0 */
+            width: 250px;
+            background-color: #454444;
+            padding: 20px;
+            box-sizing: border-box;
+            height: 100vh;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #454444;
+            color: white;
+            border: none;
+            border-radius: 0;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .sidebar button:hover {
+            background-color: #1c1c1c;
+        }
+
+        /* 主内容区 */
+        .main-content {
+            flex-grow: 1;
+            padding: 0;
+            height: 100vh;
+            overflow-y: auto;
+            display: none;  /* 默认不显示内容，按钮点击后显示 */
+        }
+
+        /* 使用说明的内容 */
+        #usage-instructions {
+            display: block;
+            padding: 20px;
+        }
+
+        /* RDF生成的内容 */
+        #rdf-generation {
+            display: none;
+            background-size: cover;
+            background-position: center;
+            padding: -5px;
+            height: calc(100vh - 30px);
+        }
+
+        .boxes {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background-color: rgba(255, 255, 255, 1.0);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+        }
+
+        .box h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .box input[type="file"] {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .box button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .box button:hover {
+            background-color: #45a049;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                margin-bottom: 20px;
+            }
+
+            .main-content {
+                width: 100%;
+            }
+
+            .box {
+                width: 90%;
+            }
+        }
