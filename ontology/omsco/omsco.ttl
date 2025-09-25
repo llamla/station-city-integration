@@ -1,0 +1,2961 @@
+@prefix : <http://www.MetroRiskOntology.org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@base <http://www.MetroRiskOntology.org> .
+
+<http://www.MetroRiskOntology.org> rdf:type owl:Ontology .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#dateTime
+xsd:dateTime owl:equivalentClass xsd:string .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.MetroRiskOntology.org#ObservedAcceleration
+:ObservedAcceleration rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :ObservedStructure ;
+                      rdfs:domain :AccelerationMonitoring ;
+                      rdfs:range :Acceleration .
+
+
+###  http://www.MetroRiskOntology.org#ObservedAngularVelocity
+:ObservedAngularVelocity rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :ObservedStructure ;
+                         rdfs:domain :AngularVelocityMonitoring ;
+                         rdfs:range :AngularVelocity .
+
+
+###  http://www.MetroRiskOntology.org#ObservedCO2
+:ObservedCO2 rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :ObservedEnvironment ;
+             rdfs:domain :CO2Monitoring ;
+             rdfs:range :CO2Concentration .
+
+
+###  http://www.MetroRiskOntology.org#ObservedCrackOpeningDisplacement
+:ObservedCrackOpeningDisplacement rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :ObservedStructure ;
+                                  rdfs:domain :CrackOpeningDisplacementMonitoring ;
+                                  rdfs:range :CrackOpeningDisplacement .
+
+
+###  http://www.MetroRiskOntology.org#ObservedCrowdFlow
+:ObservedCrowdFlow rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :observedProperty ;
+                   rdfs:domain :CrowdFlowObservation ;
+                   rdfs:range :CrowdFlowProperty .
+
+
+###  http://www.MetroRiskOntology.org#ObservedCrowdFlowDirection
+:ObservedCrowdFlowDirection rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :ObservedCrowdFlow ;
+                            rdfs:domain :CrowdFlowDirectionMonitoring ;
+                            rdfs:range :CrowdFlowDirection .
+
+
+###  http://www.MetroRiskOntology.org#ObservedCrowdFlowRate
+:ObservedCrowdFlowRate rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :ObservedCrowdFlow ;
+                       rdfs:domain :CrowdFlowRateMonitoring ;
+                       rdfs:range :CrowdFlowRate .
+
+
+###  http://www.MetroRiskOntology.org#ObservedCurrent
+:ObservedCurrent rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :ObservedEnergyConsumption ;
+                 rdfs:domain :CurrentMonitoring ;
+                 rdfs:range :Current .
+
+
+###  http://www.MetroRiskOntology.org#ObservedDisplacement
+:ObservedDisplacement rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :ObservedStructure ;
+                      rdfs:domain :DisplacementMonitoring ;
+                      rdfs:range :Displacement .
+
+
+###  http://www.MetroRiskOntology.org#ObservedElectricEnergy
+:ObservedElectricEnergy rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :ObservedEnergyConsumption ;
+                        rdfs:domain :ElectricEnergyMonitoring ;
+                        rdfs:range :ElectricEnergy .
+
+
+###  http://www.MetroRiskOntology.org#ObservedEnergyConsumption
+:ObservedEnergyConsumption rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :observedProperty ;
+                           rdfs:domain :EnergyConsumptionObservation ;
+                           rdfs:range :EnergyConsumptionProperty .
+
+
+###  http://www.MetroRiskOntology.org#ObservedEnvironment
+:ObservedEnvironment rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :observedProperty ;
+                     rdfs:domain :EnvironmentalObservation ;
+                     rdfs:range :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#ObservedEvent
+:ObservedEvent rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :observedProperty ;
+               rdfs:domain :EventObservation ;
+               rdfs:range :EventProperty .
+
+
+###  http://www.MetroRiskOntology.org#ObservedFalling
+:ObservedFalling rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :ObservedEvent ;
+                 rdfs:domain :FallingMonitoring ;
+                 rdfs:range :Falling .
+
+
+###  http://www.MetroRiskOntology.org#ObservedFireSourceLocation
+:ObservedFireSourceLocation rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :ObservedEnvironment ;
+                            rdfs:domain :FireSourceLocationMonitoring ;
+                            rdfs:range :FireSourceLocation .
+
+
+###  http://www.MetroRiskOntology.org#ObservedFlameTemperature
+:ObservedFlameTemperature rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :ObservedEnvironment ;
+                          rdfs:domain :FlameTemperatureMonitoring ;
+                          rdfs:range :FlameTemperature .
+
+
+###  http://www.MetroRiskOntology.org#ObservedHarmfulGasComponents
+:ObservedHarmfulGasComponents rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :ObservedEnvironment ;
+                              rdfs:domain :HarmfulGasComponentsMonitoring ;
+                              rdfs:range :HarmfulGasComponents .
+
+
+###  http://www.MetroRiskOntology.org#ObservedHumidity
+:ObservedHumidity rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :ObservedEnvironment ;
+                  rdfs:domain :HumidityMonitoring ;
+                  rdfs:range :Humidity .
+
+
+###  http://www.MetroRiskOntology.org#ObservedIndividualSpeed
+:ObservedIndividualSpeed rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :ObservedCrowdFlow ;
+                         rdfs:domain :IndividualSpeedMonitoring ;
+                         rdfs:range :IndividualSpeed .
+
+
+###  http://www.MetroRiskOntology.org#ObservedNoise
+:ObservedNoise rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :ObservedEnvironment ;
+               rdfs:domain :NoiseMonitoring ;
+               rdfs:range :NoiseDecibels .
+
+
+###  http://www.MetroRiskOntology.org#ObservedPM10
+:ObservedPM10 rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :ObservedEnvironment ;
+              rdfs:domain :PM10Monitoring ;
+              rdfs:range :PM10Concentration .
+
+
+###  http://www.MetroRiskOntology.org#ObservedPM2.5
+:ObservedPM2.5 rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :ObservedEnvironment ;
+               rdfs:domain :PM2.5Monitoring ;
+               rdfs:range :PM2.5Concentration .
+
+
+###  http://www.MetroRiskOntology.org#ObservedPersonnelDensity
+:ObservedPersonnelDensity rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :ObservedCrowdFlow ;
+                          rdfs:domain :PersonnelDensityMonitoring ;
+                          rdfs:range :PersonnelDensity .
+
+
+###  http://www.MetroRiskOntology.org#ObservedPipeTemperature
+:ObservedPipeTemperature rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :ObservedEnergyConsumption ;
+                         rdfs:domain :PipeTemperatureMonitoring ;
+                         rdfs:range :PipeTemperature .
+
+
+###  http://www.MetroRiskOntology.org#ObservedPower
+:ObservedPower rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :ObservedEnergyConsumption ;
+               rdfs:domain :PowerMonitoring ;
+               rdfs:range :Power .
+
+
+###  http://www.MetroRiskOntology.org#ObservedQueueSize
+:ObservedQueueSize rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :ObservedCrowdFlow ;
+                   rdfs:domain :QueueSizeMonitoring ;
+                   rdfs:range :QueueSize .
+
+
+###  http://www.MetroRiskOntology.org#ObservedRunning
+:ObservedRunning rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :ObservedEvent ;
+                 rdfs:domain :RunningMonitoring ;
+                 rdfs:range :Running .
+
+
+###  http://www.MetroRiskOntology.org#ObservedSmokeConcentration
+:ObservedSmokeConcentration rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :ObservedEnvironment ;
+                            rdfs:domain :SmokeConcentrationMonitoring ;
+                            rdfs:range :SmokeConcentration .
+
+
+###  http://www.MetroRiskOntology.org#ObservedStrain
+:ObservedStrain rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :ObservedStructure ;
+                rdfs:domain :StrainMonitoring ;
+                rdfs:range :Strain .
+
+
+###  http://www.MetroRiskOntology.org#ObservedStress
+:ObservedStress rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :ObservedStructure ;
+                rdfs:domain :StressMonitoring ;
+                rdfs:range :Stress .
+
+
+###  http://www.MetroRiskOntology.org#ObservedStructure
+:ObservedStructure rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :observedProperty ;
+                   rdfs:domain :StructuralObservation ;
+                   rdfs:range :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#ObservedTemperature
+:ObservedTemperature rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :ObservedEnvironment ;
+                     rdfs:domain :TemperatureMonitoring ;
+                     rdfs:range :Temperature .
+
+
+###  http://www.MetroRiskOntology.org#ObservedTotalPopulationInTheArea
+:ObservedTotalPopulationInTheArea rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :ObservedCrowdFlow ;
+                                  rdfs:domain :TotalPopulationInTheAreaMonitoring ;
+                                  rdfs:range :TotalPopulationInTheArea .
+
+
+###  http://www.MetroRiskOntology.org#ObservedTripleAxialTiltAngle
+:ObservedTripleAxialTiltAngle rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :ObservedStructure ;
+                              rdfs:domain :TripleAxialTiltAngleMonitoring ;
+                              rdfs:range :TripleAxialTiltAngle .
+
+
+###  http://www.MetroRiskOntology.org#ObservedVoltage
+:ObservedVoltage rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :ObservedEnergyConsumption ;
+                 rdfs:domain :VoltageMonitoring ;
+                 rdfs:range :Voltage .
+
+
+###  http://www.MetroRiskOntology.org#ObservedWaterDepth
+:ObservedWaterDepth rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :ObservedEnvironment ;
+                    rdfs:domain :WaterDepthMonitoring ;
+                    rdfs:range :WaterDepth .
+
+
+###  http://www.MetroRiskOntology.org#ObservedWaterFlowVelocity
+:ObservedWaterFlowVelocity rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :ObservedEnvironment ;
+                           rdfs:domain :WaterFlowVelocityMonitoring ;
+                           rdfs:range :WaterFlowVelocity .
+
+
+###  http://www.MetroRiskOntology.org#ObservedWaterLeakage
+:ObservedWaterLeakage rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :ObservedStructure ;
+                      rdfs:domain :WaterLeakageMonitoring ;
+                      rdfs:range :WaterLeakage .
+
+
+###  http://www.MetroRiskOntology.org#ObservedXYZVelocity
+:ObservedXYZVelocity rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :ObservedStructure ;
+                     rdfs:domain :XYZVelocityMonitoring ;
+                     rdfs:range :XYZVelocity .
+
+
+###  http://www.MetroRiskOntology.org#detectedByAccelerationMonitoring
+:detectedByAccelerationMonitoring rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :detectedByStructuralObservation ;
+                                  rdfs:domain :AbnormalVibration ;
+                                  rdfs:range :AccelerationMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByAngularVelocityMonitoring
+:detectedByAngularVelocityMonitoring rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf :detectedByStructuralObservation ;
+                                     rdfs:domain :AbnormalVibration ;
+                                     rdfs:range :AngularVelocityMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByCO2Monitoring
+:detectedByCO2Monitoring rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                         rdfs:domain :AirQualityWarning ;
+                         rdfs:range :CO2Monitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByCrackOpeningDisplacementMonitoring
+:detectedByCrackOpeningDisplacementMonitoring rdf:type owl:ObjectProperty ;
+                                              rdfs:subPropertyOf :detectedByStructuralObservation ;
+                                              rdfs:domain :AbnormalCrack ;
+                                              rdfs:range :CrackOpeningDisplacementMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByCrowdFlowObservation
+:detectedByCrowdFlowObservation rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf :detectedByObservation .
+
+
+###  http://www.MetroRiskOntology.org#detectedByCrowdFlowRateMonitoring
+:detectedByCrowdFlowRateMonitoring rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf :detectedByCrowdFlowObservation ;
+                                   rdfs:domain :LargeCrowdFlowWarning ;
+                                   rdfs:range :CrowdFlowRateMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByCurrentMonitoring
+:detectedByCurrentMonitoring rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :detectedByEnergyConsumptionObservation ;
+                             rdfs:domain :AbnormalEnergyConsumption ;
+                             rdfs:range :CurrentMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByDisplacementMonitoring
+:detectedByDisplacementMonitoring rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :detectedByStructuralObservation ;
+                                  rdfs:domain :StructuralDisplacement ;
+                                  rdfs:range :DisplacementMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByElectricEnergyMonitoring
+:detectedByElectricEnergyMonitoring rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf :detectedByEnergyConsumptionObservation ;
+                                    rdfs:domain :AbnormalEnergyConsumption ;
+                                    rdfs:range :ElectricEnergyMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByEnergyConsumptionObservation
+:detectedByEnergyConsumptionObservation rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf :detectedByObservation ;
+                                        rdfs:domain :EnergyConsumptionWarning ;
+                                        rdfs:range :EnergyConsumptionObservation .
+
+
+###  http://www.MetroRiskOntology.org#detectedByEnvironmentalObservation
+:detectedByEnvironmentalObservation rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf :detectedByObservation ;
+                                    rdfs:domain :EnvironmentalWarning ;
+                                    rdfs:range :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#detectedByEventObservation
+:detectedByEventObservation rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :detectedByObservation ;
+                            rdfs:domain :EventWarning ;
+                            rdfs:range :EventObservation .
+
+
+###  http://www.MetroRiskOntology.org#detectedByFallingMonitoring
+:detectedByFallingMonitoring rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :detectedByEventObservation ;
+                             rdfs:domain :FallingEvent ;
+                             rdfs:range :FallingMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByFireSourceLocationMonitoring
+:detectedByFireSourceLocationMonitoring rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                                        rdfs:domain :FireWarning ;
+                                        rdfs:range :FireSourceLocationMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByFlameTemperatureMonitoring
+:detectedByFlameTemperatureMonitoring rdf:type owl:ObjectProperty ;
+                                      rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                                      rdfs:domain :FireWarning ;
+                                      rdfs:range :FlameTemperatureMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByHarmfulGasComponentsMonitoring
+:detectedByHarmfulGasComponentsMonitoring rdf:type owl:ObjectProperty ;
+                                          rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                                          rdfs:domain :FireWarning ;
+                                          rdfs:range :HarmfulGasComponentsMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByHumidityMonitoring
+:detectedByHumidityMonitoring rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                              rdfs:domain :AbnormalHumidity ;
+                              rdfs:range :HumidityMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByIndividualSpeedMonitoring
+:detectedByIndividualSpeedMonitoring rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf :detectedByCrowdFlowObservation ;
+                                     rdfs:domain :LargeCrowdFlowWarning ;
+                                     rdfs:range :IndividualSpeedMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByNoiseMonitoring
+:detectedByNoiseMonitoring rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                           rdfs:domain :AbnormalNoise ;
+                           rdfs:range :NoiseMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByObservation
+:detectedByObservation rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Alarm ;
+                       rdfs:range :Observation .
+
+
+###  http://www.MetroRiskOntology.org#detectedByPM10Monitoring
+:detectedByPM10Monitoring rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                          rdfs:domain :AirQualityWarning ;
+                          rdfs:range :PM10Monitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByPM2.5Monitoring
+:detectedByPM2.5Monitoring rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                           rdfs:domain :AirQualityWarning ;
+                           rdfs:range :PM2.5Monitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByPersonnelDensityMonitoring
+:detectedByPersonnelDensityMonitoring rdf:type owl:ObjectProperty ;
+                                      rdfs:subPropertyOf :detectedByCrowdFlowObservation ;
+                                      rdfs:domain :LargeCrowdFlowWarning ;
+                                      rdfs:range :PersonnelDensityMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByPipeTemperatureMonitoring
+:detectedByPipeTemperatureMonitoring rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf :detectedByEnergyConsumptionObservation ;
+                                     rdfs:domain :AbnormalEnergyConsumption ;
+                                     rdfs:range :PipeTemperatureMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByPowerMonitoring
+:detectedByPowerMonitoring rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :detectedByEnergyConsumptionObservation ;
+                           rdfs:domain :AbnormalEnergyConsumption ;
+                           rdfs:range :PowerMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByQueueSizeMonitoring
+:detectedByQueueSizeMonitoring rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf :detectedByCrowdFlowObservation ;
+                               rdfs:domain :LargeCrowdFlowWarning ;
+                               rdfs:range :QueueSizeMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByRunningMonitoring
+:detectedByRunningMonitoring rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :detectedByEventObservation ;
+                             rdfs:domain :RunningEvent ;
+                             rdfs:range :RunningMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedBySmokeConcentrationMonitoring
+:detectedBySmokeConcentrationMonitoring rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                                        rdfs:domain :FireWarning ;
+                                        rdfs:range :SmokeConcentrationMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByStrainMonitoring
+:detectedByStrainMonitoring rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :detectedByStructuralObservation ;
+                            rdfs:domain :StructuralDeformation ;
+                            rdfs:range :StrainMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByStressMonitoring
+:detectedByStressMonitoring rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :detectedByStructuralObservation ;
+                            rdfs:domain :StructuralOverload ;
+                            rdfs:range :StressMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByStructuralObservation
+:detectedByStructuralObservation rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf :detectedByObservation ;
+                                 rdfs:domain :StructuralWarning ;
+                                 rdfs:range :StructuralObservation .
+
+
+###  http://www.MetroRiskOntology.org#detectedByTemperatureMonitoring
+:detectedByTemperatureMonitoring rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                                 rdfs:domain :AbnormalTemperature ;
+                                 rdfs:range :TemperatureMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByTotalPopulationInTheAreaMonitoring
+:detectedByTotalPopulationInTheAreaMonitoring rdf:type owl:ObjectProperty ;
+                                              rdfs:subPropertyOf :detectedByCrowdFlowObservation ;
+                                              rdfs:domain :LargeCrowdFlowWarning ;
+                                              rdfs:range :TotalPopulationInTheAreaMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByTripleAxialTiltAngleMonitoring
+:detectedByTripleAxialTiltAngleMonitoring rdf:type owl:ObjectProperty ;
+                                          rdfs:subPropertyOf :detectedByStructuralObservation ;
+                                          rdfs:domain :StructuralTilt ;
+                                          rdfs:range :TripleAxialTiltAngleMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByVoltageMonitoring
+:detectedByVoltageMonitoring rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :detectedByEnergyConsumptionObservation ;
+                             rdfs:domain :AbnormalEnergyConsumption ;
+                             rdfs:range :VoltageMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByWaterDepthMonitoring
+:detectedByWaterDepthMonitoring rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                                rdfs:domain :FloodWarning ;
+                                rdfs:range :WaterDepthMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByWaterFlowVelocityMonitoring
+:detectedByWaterFlowVelocityMonitoring rdf:type owl:ObjectProperty ;
+                                       rdfs:subPropertyOf :detectedByEnvironmentalObservation ;
+                                       rdfs:domain :FloodWarning ;
+                                       rdfs:range :WaterFlowVelocityMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByWaterLeakageMonitoring
+:detectedByWaterLeakageMonitoring rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :detectedByStructuralObservation ;
+                                  rdfs:domain :StructuralCorrosion ;
+                                  rdfs:range :WaterLeakageMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#detectedByXYZVelocityMonitoring
+:detectedByXYZVelocityMonitoring rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf :detectedByStructuralObservation ;
+                                 rdfs:domain :AbnormalVibration ;
+                                 rdfs:range :XYZVelocityMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#hasAbnormalCrackOf
+:hasAbnormalCrackOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasStructuralProblemOf ;
+                    rdfs:domain :CrackOpeningDisplacementMonitoring ;
+                    rdfs:range :AbnormalCrack .
+
+
+###  http://www.MetroRiskOntology.org#hasAbnormalEnergyConsumptionOf
+:hasAbnormalEnergyConsumptionOf rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf :hasEnergyConsumptionProblemOf ;
+                                rdfs:domain :CurrentMonitoring ,
+                                            :ElectricEnergyMonitoring ,
+                                            :PipeTemperatureMonitoring ,
+                                            :PowerMonitoring ,
+                                            :VoltageMonitoring ;
+                                rdfs:range :AbnormalEnergyConsumption .
+
+
+###  http://www.MetroRiskOntology.org#hasAbnormalHumidityOf
+:hasAbnormalHumidityOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :hasEnvironmentalProblemOf ;
+                       rdfs:domain :HumidityMonitoring ;
+                       rdfs:range :AbnormalHumidity .
+
+
+###  http://www.MetroRiskOntology.org#hasAbnormalNoiseOf
+:hasAbnormalNoiseOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasEnvironmentalProblemOf ;
+                    rdfs:domain :NoiseMonitoring ;
+                    rdfs:range :AbnormalNoise .
+
+
+###  http://www.MetroRiskOntology.org#hasAbnormalState
+:hasAbnormalState rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Sensor ;
+                  rdfs:range :AbnormalStatus .
+
+
+###  http://www.MetroRiskOntology.org#hasAbnormalTemperatureOf
+:hasAbnormalTemperatureOf rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :hasEnvironmentalProblemOf ;
+                          rdfs:domain :TemperatureMonitoring ;
+                          rdfs:range :AbnormalTemperature .
+
+
+###  http://www.MetroRiskOntology.org#hasAbnormalVibrationOf
+:hasAbnormalVibrationOf rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :hasStructuralProblemOf ;
+                        rdfs:domain :AccelerationMonitoring ,
+                                    :AngularVelocityMonitoring ,
+                                    :XYZVelocityMonitoring ;
+                        rdfs:range :AbnormalVibration .
+
+
+###  http://www.MetroRiskOntology.org#hasAccelerationProperty
+:hasAccelerationProperty rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :hasStructuralProperty ;
+                         rdfs:domain :CanopyColumn ,
+                                     :ConnectionNode ,
+                                     :StructuralColumn ,
+                                     :Truss ;
+                         rdfs:range :Acceleration .
+
+
+###  http://www.MetroRiskOntology.org#hasAirConditioningUnit
+:hasAirConditioningUnit rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :hasEquipment ;
+                        rdfs:domain :CurrentMonitoring ,
+                                    :ElectricEnergyMonitoring ,
+                                    :PowerMonitoring ,
+                                    :VoltageMonitoring ;
+                        rdfs:range :AirConditioningUnit .
+
+
+###  http://www.MetroRiskOntology.org#hasAirQualityWarningOf
+:hasAirQualityWarningOf rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :hasEnvironmentalProblemOf ;
+                        rdfs:domain :CO2Monitoring ,
+                                    :PM10Monitoring ,
+                                    :PM2.5Monitoring ;
+                        rdfs:range :AirQualityWarning .
+
+
+###  http://www.MetroRiskOntology.org#hasAngularVelocityProperty
+:hasAngularVelocityProperty rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :hasStructuralProperty ;
+                            rdfs:domain :CanopyColumn ,
+                                        :ConnectionNode ,
+                                        :StructuralColumn ,
+                                        :Truss ;
+                            rdfs:range :AngularVelocity .
+
+
+###  http://www.MetroRiskOntology.org#hasArea
+:hasArea rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :hasFeatureOfInterest ;
+         rdfs:domain :CrowdFlowObservation ,
+                     :EnvironmentalObservation ,
+                     :EventObservation ;
+         rdfs:range :Area .
+
+
+###  http://www.MetroRiskOntology.org#hasCO2Property
+:hasCO2Property rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                rdfs:domain :StationConcourseLevel ,
+                            :WaitingHall ;
+                rdfs:range :CO2Concentration .
+
+
+###  http://www.MetroRiskOntology.org#hasCanopyColumn
+:hasCanopyColumn rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasStructure ;
+                 rdfs:domain :AccelerationMonitoring ,
+                             :AngularVelocityMonitoring ,
+                             :XYZVelocityMonitoring ;
+                 rdfs:range :CanopyColumn .
+
+
+###  http://www.MetroRiskOntology.org#hasConnectionNode
+:hasConnectionNode rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasStructure ;
+                   rdfs:domain :AccelerationMonitoring ,
+                               :AngularVelocityMonitoring ,
+                               :CrackOpeningDisplacementMonitoring ,
+                               :DisplacementMonitoring ,
+                               :TripleAxialTiltAngleMonitoring ,
+                               :WaterLeakageMonitoring ,
+                               :XYZVelocityMonitoring ;
+                   rdfs:range :ConnectionNode .
+
+
+###  http://www.MetroRiskOntology.org#hasCrackOpeningDisplacementProperty
+:hasCrackOpeningDisplacementProperty rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf :hasStructuralProperty ;
+                                     rdfs:domain :ConnectionNode ,
+                                                 :Pillar ;
+                                     rdfs:range :CrackOpeningDisplacement .
+
+
+###  http://www.MetroRiskOntology.org#hasCrowdFlowDirectionProperty
+:hasCrowdFlowDirectionProperty rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf :hasCrowdFlowProperty ;
+                               rdfs:domain :PlatformLevel ,
+                                           :TransferCorridor ,
+                                           :WaitingHall ;
+                               rdfs:range :CrowdFlowDirection .
+
+
+###  http://www.MetroRiskOntology.org#hasCrowdFlowProblemOf
+:hasCrowdFlowProblemOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :hasProblemOf ;
+                       rdfs:domain :CrowdFlowObservation ;
+                       rdfs:range :CrowdFlowWarning .
+
+
+###  http://www.MetroRiskOntology.org#hasCrowdFlowProperty
+:hasCrowdFlowProperty rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :hasProperty ;
+                      rdfs:domain :Area ;
+                      rdfs:range :CrowdFlowProperty .
+
+
+###  http://www.MetroRiskOntology.org#hasCrowdFlowRateProperty
+:hasCrowdFlowRateProperty rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :hasCrowdFlowProperty ;
+                          rdfs:domain :PlatformLevel ,
+                                      :TransferCorridor ,
+                                      :WaitingHall ;
+                          rdfs:range :CrowdFlowRate .
+
+
+###  http://www.MetroRiskOntology.org#hasCurrentProperty
+:hasCurrentProperty rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasEnergyConsumptionProperty ;
+                    rdfs:domain :AirConditioningUnit ,
+                                :DistributionBox ,
+                                :PumpAssembly ;
+                    rdfs:range :Current .
+
+
+###  http://www.MetroRiskOntology.org#hasDisplacementProperty
+:hasDisplacementProperty rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :hasStructuralProperty ;
+                         rdfs:domain :ConnectionNode ,
+                                     :Pillar ;
+                         rdfs:range :Displacement .
+
+
+###  http://www.MetroRiskOntology.org#hasDistributionBox
+:hasDistributionBox rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasEquipment ;
+                    rdfs:domain :CurrentMonitoring ,
+                                :ElectricEnergyMonitoring ,
+                                :PowerMonitoring ,
+                                :VoltageMonitoring ;
+                    rdfs:range :DistributionBox .
+
+
+###  http://www.MetroRiskOntology.org#hasElectricEnergyProperty
+:hasElectricEnergyProperty rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :hasEnergyConsumptionProperty ;
+                           rdfs:domain :AirConditioningUnit ,
+                                       :DistributionBox ,
+                                       :PumpAssembly ;
+                           rdfs:range :ElectricEnergy .
+
+
+###  http://www.MetroRiskOntology.org#hasEnergyConsumptionProblemOf
+:hasEnergyConsumptionProblemOf rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf :hasProblemOf ;
+                               rdfs:domain :EnergyConsumptionObservation ;
+                               rdfs:range :EnergyConsumptionWarning .
+
+
+###  http://www.MetroRiskOntology.org#hasEnergyConsumptionProperty
+:hasEnergyConsumptionProperty rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :hasProperty ;
+                              rdfs:domain :Equipment ;
+                              rdfs:range :EnergyConsumptionProperty .
+
+
+###  http://www.MetroRiskOntology.org#hasEnvironmentalProblemOf
+:hasEnvironmentalProblemOf rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :hasProblemOf ;
+                           rdfs:domain :EnvironmentalObservation ;
+                           rdfs:range :EnvironmentalWarning .
+
+
+###  http://www.MetroRiskOntology.org#hasEnvironmentalProperty
+:hasEnvironmentalProperty rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :hasProperty ;
+                          rdfs:domain :Area ;
+                          rdfs:range :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#hasEquipment
+:hasEquipment rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasFeatureOfInterest ;
+              rdfs:domain :EnergyConsumptionObservation ;
+              rdfs:range :Equipment .
+
+
+###  http://www.MetroRiskOntology.org#hasEventProblemOf
+:hasEventProblemOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasProblemOf ;
+                   rdfs:domain :EventObservation ;
+                   rdfs:range :EventWarning .
+
+
+###  http://www.MetroRiskOntology.org#hasEventProperty
+:hasEventProperty rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasProperty ;
+                  rdfs:domain :Area ;
+                  rdfs:range :EventProperty .
+
+
+###  http://www.MetroRiskOntology.org#hasFallingEventOf
+:hasFallingEventOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasEventProblemOf ;
+                   rdfs:domain :FallingMonitoring ;
+                   rdfs:range :FallingEvent .
+
+
+###  http://www.MetroRiskOntology.org#hasFallingProperty
+:hasFallingProperty rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasEventProperty ;
+                    rdfs:domain :PlatformLevel ,
+                                :TransferCorridor ,
+                                :WaitingHall ;
+                    rdfs:range :Falling .
+
+
+###  http://www.MetroRiskOntology.org#hasFeatureOfInterest
+:hasFeatureOfInterest rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Observation ;
+                      rdfs:range :FeatureOfInterest .
+
+
+###  http://www.MetroRiskOntology.org#hasFireSourceLocationProperty
+:hasFireSourceLocationProperty rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                               rdfs:domain :TransferCorridor ,
+                                           :WaitingHall ;
+                               rdfs:range :FireSourceLocation .
+
+
+###  http://www.MetroRiskOntology.org#hasFireWarningOf
+:hasFireWarningOf rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasEnvironmentalProblemOf ;
+                  rdfs:domain :FireSourceLocationMonitoring ,
+                              :FlameTemperatureMonitoring ,
+                              :HarmfulGasComponentsMonitoring ,
+                              :SmokeConcentrationMonitoring ;
+                  rdfs:range :FireWarning .
+
+
+###  http://www.MetroRiskOntology.org#hasFlameTemperatureProperty
+:hasFlameTemperatureProperty rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                             rdfs:domain :TransferCorridor ,
+                                         :WaitingHall ;
+                             rdfs:range :FlameTemperature .
+
+
+###  http://www.MetroRiskOntology.org#hasFloodWarningOf
+:hasFloodWarningOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasEnvironmentalProblemOf ;
+                   rdfs:domain :WaterDepthMonitoring ,
+                               :WaterFlowVelocityMonitoring ;
+                   rdfs:range :FloodWarning .
+
+
+###  http://www.MetroRiskOntology.org#hasGlassFacadeCable
+:hasGlassFacadeCable rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :hasStructure ;
+                     rdfs:domain :StrainMonitoring ,
+                                 :StressMonitoring ;
+                     rdfs:range :GlassFacadeCable .
+
+
+###  http://www.MetroRiskOntology.org#hasHarmfulGasComponentsProperty
+:hasHarmfulGasComponentsProperty rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                                 rdfs:domain :TransferCorridor ,
+                                             :WaitingHall ;
+                                 rdfs:range :HarmfulGasComponents .
+
+
+###  http://www.MetroRiskOntology.org#hasHumidityProperty
+:hasHumidityProperty rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                     rdfs:domain :StationConcourseLevel ,
+                                 :WaitingHall ;
+                     rdfs:range :Humidity .
+
+
+###  http://www.MetroRiskOntology.org#hasIndividualSpeedProperty
+:hasIndividualSpeedProperty rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :hasCrowdFlowProperty ;
+                            rdfs:domain :PlatformLevel ,
+                                        :TransferCorridor ,
+                                        :WaitingHall ;
+                            rdfs:range :IndividualSpeed .
+
+
+###  http://www.MetroRiskOntology.org#hasLargeCrowdFlowOf
+:hasLargeCrowdFlowOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :hasCrowdFlowProblemOf ;
+                     rdfs:domain :CrowdFlowRateMonitoring ,
+                                 :IndividualSpeedMonitoring ,
+                                 :PersonnelDensityMonitoring ,
+                                 :QueueSizeMonitoring ,
+                                 :TotalPopulationInTheAreaMonitoring ;
+                     rdfs:range :LargeCrowdFlowWarning .
+
+
+###  http://www.MetroRiskOntology.org#hasMaintenanceOverdue
+:hasMaintenanceOverdue rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :hasAbnormalState ;
+                       rdfs:domain :AirQualitySensor ,
+                                   :CrowdFlowSensors ,
+                                   :DigitalCrackMeter ,
+                                   :EnergyConsumptionSensors ,
+                                   :EnvironmentalSensors ,
+                                   :EventSensors ,
+                                   :HarmfulGasDetector ,
+                                   :InclinationGauge ,
+                                   :LowPowerDisplacementSensor ,
+                                   :LowPowerStrainSensor ,
+                                   :LowPowerStressSensor ,
+                                   :MachineVisionSensor ,
+                                   :MatchingCurrentTransformer ,
+                                   :NoiseSensor ,
+                                   :PanoramicCamera ,
+                                   :PeopleCountingSensor ,
+                                   :SmokeSensor ,
+                                   :StructuralSensors ,
+                                   :TemperatureAndHumiditySensor ,
+                                   :TemperatureSensor ,
+                                   :ThermalImagingCamera ,
+                                   :UltrasonicFlowRateSensor ,
+                                   :UltrasonicLevelGauge ,
+                                   :UprightGrapheneSensor ,
+                                   :VibrationSensor ,
+                                   :WirelessMeteringMeter ;
+                       rdfs:range :MaintenanceOverdue .
+
+
+###  http://www.MetroRiskOntology.org#hasNoiseProperty
+:hasNoiseProperty rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                  rdfs:domain :PlatformLevel ,
+                              :StationConcourseLevel ,
+                              :WaitingHall ;
+                  rdfs:range :NoiseDecibels .
+
+
+###  http://www.MetroRiskOntology.org#hasNotWorking
+:hasNotWorking rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasAbnormalState ;
+               rdfs:domain :AirQualitySensor ,
+                           :CrowdFlowSensors ,
+                           :DigitalCrackMeter ,
+                           :EnergyConsumptionSensors ,
+                           :EnvironmentalSensors ,
+                           :EventSensors ,
+                           :HarmfulGasDetector ,
+                           :InclinationGauge ,
+                           :LowPowerDisplacementSensor ,
+                           :LowPowerStrainSensor ,
+                           :LowPowerStressSensor ,
+                           :MachineVisionSensor ,
+                           :MatchingCurrentTransformer ,
+                           :NoiseSensor ,
+                           :PanoramicCamera ,
+                           :PeopleCountingSensor ,
+                           :SmokeSensor ,
+                           :StructuralSensors ,
+                           :TemperatureAndHumiditySensor ,
+                           :TemperatureSensor ,
+                           :ThermalImagingCamera ,
+                           :UltrasonicFlowRateSensor ,
+                           :UltrasonicLevelGauge ,
+                           :UprightGrapheneSensor ,
+                           :VibrationSensor ,
+                           :WirelessMeteringMeter ;
+               rdfs:range :NotWorking .
+
+
+###  http://www.MetroRiskOntology.org#hasPM10Property
+:hasPM10Property rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                 rdfs:domain :StationConcourseLevel ,
+                             :WaitingHall ;
+                 rdfs:range :PM10Concentration .
+
+
+###  http://www.MetroRiskOntology.org#hasPM2.5Property
+:hasPM2.5Property rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                  rdfs:domain :StationConcourseLevel ,
+                              :WaitingHall ;
+                  rdfs:range :PM2.5Concentration .
+
+
+###  http://www.MetroRiskOntology.org#hasPersonnelDensityProperty
+:hasPersonnelDensityProperty rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :hasCrowdFlowProperty ;
+                             rdfs:domain :PlatformLevel ,
+                                         :TransferCorridor ,
+                                         :WaitingHall ;
+                             rdfs:range :PersonnelDensity .
+
+
+###  http://www.MetroRiskOntology.org#hasPillar
+:hasPillar rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasStructure ;
+           rdfs:domain :CrackOpeningDisplacementMonitoring ,
+                       :DisplacementMonitoring ,
+                       :TripleAxialTiltAngleMonitoring ,
+                       :WaterLeakageMonitoring ;
+           rdfs:range :Pillar .
+
+
+###  http://www.MetroRiskOntology.org#hasPipeTemperatureProperty
+:hasPipeTemperatureProperty rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :hasEnergyConsumptionProperty ;
+                            rdfs:domain :PumpAssembly ;
+                            rdfs:range :PipeTemperature .
+
+
+###  http://www.MetroRiskOntology.org#hasPlatformLevel
+:hasPlatformLevel rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasArea ;
+                  rdfs:domain :CrowdFlowDirectionMonitoring ,
+                              :CrowdFlowRateMonitoring ,
+                              :FallingMonitoring ,
+                              :IndividualSpeedMonitoring ,
+                              :NoiseMonitoring ,
+                              :PersonnelDensityMonitoring ,
+                              :QueueSizeMonitoring ,
+                              :RunningMonitoring ,
+                              :TotalPopulationInTheAreaMonitoring ;
+                  rdfs:range :PlatformLevel .
+
+
+###  http://www.MetroRiskOntology.org#hasPowerProperty
+:hasPowerProperty rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasEnergyConsumptionProperty ;
+                  rdfs:domain :AirConditioningUnit ,
+                              :DistributionBox ,
+                              :PumpAssembly ;
+                  rdfs:range :Power .
+
+
+###  http://www.MetroRiskOntology.org#hasProblemOf
+:hasProblemOf rdf:type owl:ObjectProperty ;
+              rdfs:domain :Observation ;
+              rdfs:range :Alarm .
+
+
+###  http://www.MetroRiskOntology.org#hasProperty
+:hasProperty rdf:type owl:ObjectProperty ;
+             rdfs:domain :FeatureOfInterest ;
+             rdfs:range :ObservableProperty .
+
+
+###  http://www.MetroRiskOntology.org#hasPumpAssembly
+:hasPumpAssembly rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasEquipment ;
+                 rdfs:domain :CurrentMonitoring ,
+                             :ElectricEnergyMonitoring ,
+                             :PipeTemperatureMonitoring ,
+                             :PowerMonitoring ,
+                             :VoltageMonitoring ;
+                 rdfs:range :PumpAssembly .
+
+
+###  http://www.MetroRiskOntology.org#hasQueueSizeProperty
+:hasQueueSizeProperty rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :hasCrowdFlowProperty ;
+                      rdfs:domain :PlatformLevel ,
+                                  :TransferCorridor ,
+                                  :WaitingHall ;
+                      rdfs:range :QueueSize .
+
+
+###  http://www.MetroRiskOntology.org#hasRunningEventOf
+:hasRunningEventOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasEventProblemOf ;
+                   rdfs:domain :RunningMonitoring ;
+                   rdfs:range :RunningEvent .
+
+
+###  http://www.MetroRiskOntology.org#hasRunningProperty
+:hasRunningProperty rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasEventProperty ;
+                    rdfs:domain :PlatformLevel ,
+                                :TransferCorridor ,
+                                :WaitingHall ;
+                    rdfs:range :Running .
+
+
+###  http://www.MetroRiskOntology.org#hasSmokeConcentrationProperty
+:hasSmokeConcentrationProperty rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                               rdfs:domain :TransferCorridor ,
+                                           :WaitingHall ;
+                               rdfs:range :SmokeConcentration .
+
+
+###  http://www.MetroRiskOntology.org#hasStationConcourseLevel
+:hasStationConcourseLevel rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :hasArea ;
+                          rdfs:domain :CO2Monitoring ,
+                                      :HumidityMonitoring ,
+                                      :NoiseMonitoring ,
+                                      :PM10Monitoring ,
+                                      :PM2.5Monitoring ,
+                                      :TemperatureMonitoring ;
+                          rdfs:range :StationConcourseLevel .
+
+
+###  http://www.MetroRiskOntology.org#hasStationForecourt
+:hasStationForecourt rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :hasArea ;
+                     rdfs:domain :WaterDepthMonitoring ,
+                                 :WaterFlowVelocityMonitoring ;
+                     rdfs:range :StationForecourt .
+
+
+###  http://www.MetroRiskOntology.org#hasStrainProperty
+:hasStrainProperty rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasStructuralProperty ;
+                   rdfs:domain :GlassFacadeCable ;
+                   rdfs:range :Strain .
+
+
+###  http://www.MetroRiskOntology.org#hasStressProperty
+:hasStressProperty rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasStructuralProperty ;
+                   rdfs:domain :GlassFacadeCable ;
+                   rdfs:range :Stress .
+
+
+###  http://www.MetroRiskOntology.org#hasStructuralColumn
+:hasStructuralColumn rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :hasStructure ;
+                     rdfs:domain :AccelerationMonitoring ,
+                                 :AngularVelocityMonitoring ,
+                                 :XYZVelocityMonitoring ;
+                     rdfs:range :StructuralColumn .
+
+
+###  http://www.MetroRiskOntology.org#hasStructuralCorrosionOf
+:hasStructuralCorrosionOf rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :hasStructuralProblemOf ;
+                          rdfs:domain :WaterLeakageMonitoring ;
+                          rdfs:range :StructuralCorrosion .
+
+
+###  http://www.MetroRiskOntology.org#hasStructuralDeformationOf
+:hasStructuralDeformationOf rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :hasStructuralProblemOf ;
+                            rdfs:domain :StrainMonitoring ;
+                            rdfs:range :StructuralDeformation .
+
+
+###  http://www.MetroRiskOntology.org#hasStructuralDisplacementOf
+:hasStructuralDisplacementOf rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :hasStructuralProblemOf ;
+                             rdfs:domain :DisplacementMonitoring ;
+                             rdfs:range :StructuralDisplacement .
+
+
+###  http://www.MetroRiskOntology.org#hasStructuralOverloadOf
+:hasStructuralOverloadOf rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :hasStructuralProblemOf ;
+                         rdfs:domain :StressMonitoring ;
+                         rdfs:range :StructuralOverload .
+
+
+###  http://www.MetroRiskOntology.org#hasStructuralProblemOf
+:hasStructuralProblemOf rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :hasProblemOf ;
+                        rdfs:domain :StructuralObservation ;
+                        rdfs:range :StructuralWarning .
+
+
+###  http://www.MetroRiskOntology.org#hasStructuralProperty
+:hasStructuralProperty rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :hasProperty ;
+                       rdfs:domain :Structure ;
+                       rdfs:range :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#hasStructuralTiltOf
+:hasStructuralTiltOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :hasStructuralProblemOf ;
+                     rdfs:domain :TripleAxialTiltAngleMonitoring ;
+                     rdfs:range :StructuralTilt .
+
+
+###  http://www.MetroRiskOntology.org#hasStructure
+:hasStructure rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasFeatureOfInterest ;
+              rdfs:domain :StructuralObservation ;
+              rdfs:range :Structure .
+
+
+###  http://www.MetroRiskOntology.org#hasTemperatureProperty
+:hasTemperatureProperty rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                        rdfs:domain :StationConcourseLevel ,
+                                    :WaitingHall ;
+                        rdfs:range :Temperature .
+
+
+###  http://www.MetroRiskOntology.org#hasTotalPopulationInTheAreaProperty
+:hasTotalPopulationInTheAreaProperty rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf :hasCrowdFlowProperty ;
+                                     rdfs:domain :PlatformLevel ,
+                                                 :TransferCorridor ,
+                                                 :WaitingHall ;
+                                     rdfs:range :TotalPopulationInTheArea .
+
+
+###  http://www.MetroRiskOntology.org#hasTransferCorridor
+:hasTransferCorridor rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :hasArea ;
+                     rdfs:domain :CrowdFlowDirectionMonitoring ,
+                                 :CrowdFlowRateMonitoring ,
+                                 :FallingMonitoring ,
+                                 :FireSourceLocationMonitoring ,
+                                 :FlameTemperatureMonitoring ,
+                                 :HarmfulGasComponentsMonitoring ,
+                                 :IndividualSpeedMonitoring ,
+                                 :PersonnelDensityMonitoring ,
+                                 :QueueSizeMonitoring ,
+                                 :RunningMonitoring ,
+                                 :SmokeConcentrationMonitoring ,
+                                 :TotalPopulationInTheAreaMonitoring ;
+                     rdfs:range :TransferCorridor .
+
+
+###  http://www.MetroRiskOntology.org#hasTripleAxialTiltAngleProperty
+:hasTripleAxialTiltAngleProperty rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf :hasStructuralProperty ;
+                                 rdfs:domain :ConnectionNode ,
+                                             :Pillar ;
+                                 rdfs:range :TripleAxialTiltAngle .
+
+
+###  http://www.MetroRiskOntology.org#hasTruss
+:hasTruss rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasStructure ;
+          rdfs:domain :AccelerationMonitoring ,
+                      :AngularVelocityMonitoring ,
+                      :XYZVelocityMonitoring ;
+          rdfs:range :Truss .
+
+
+###  http://www.MetroRiskOntology.org#hasVoltageProperty
+:hasVoltageProperty rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasEnergyConsumptionProperty ;
+                    rdfs:domain :AirConditioningUnit ,
+                                :DistributionBox ,
+                                :PumpAssembly ;
+                    rdfs:range :Voltage .
+
+
+###  http://www.MetroRiskOntology.org#hasWaitingHall
+:hasWaitingHall rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasArea ;
+                rdfs:domain :CO2Monitoring ,
+                            :CrowdFlowDirectionMonitoring ,
+                            :CrowdFlowRateMonitoring ,
+                            :FallingMonitoring ,
+                            :FireSourceLocationMonitoring ,
+                            :FlameTemperatureMonitoring ,
+                            :HarmfulGasComponentsMonitoring ,
+                            :HumidityMonitoring ,
+                            :IndividualSpeedMonitoring ,
+                            :NoiseMonitoring ,
+                            :PM10Monitoring ,
+                            :PM2.5Monitoring ,
+                            :PersonnelDensityMonitoring ,
+                            :QueueSizeMonitoring ,
+                            :RunningMonitoring ,
+                            :SmokeConcentrationMonitoring ,
+                            :TemperatureMonitoring ,
+                            :TotalPopulationInTheAreaMonitoring ;
+                rdfs:range :WaitingHall .
+
+
+###  http://www.MetroRiskOntology.org#hasWaterDepthProperty
+:hasWaterDepthProperty rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                       rdfs:domain :StationForecourt ;
+                       rdfs:range :WaterDepth .
+
+
+###  http://www.MetroRiskOntology.org#hasWaterFlowVelocityProperty
+:hasWaterFlowVelocityProperty rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :hasEnvironmentalProperty ;
+                              rdfs:domain :StationForecourt ;
+                              rdfs:range :WaterFlowVelocity .
+
+
+###  http://www.MetroRiskOntology.org#hasWaterLeakageProperty
+:hasWaterLeakageProperty rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :hasStructuralProperty ;
+                         rdfs:domain :ConnectionNode ,
+                                     :Pillar ;
+                         rdfs:range :WaterLeakage .
+
+
+###  http://www.MetroRiskOntology.org#hasXYZVelocityProperty
+:hasXYZVelocityProperty rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :hasStructuralProperty ;
+                        rdfs:domain :CanopyColumn ,
+                                    :ConnectionNode ,
+                                    :StructuralColumn ,
+                                    :Truss ;
+                        rdfs:range :XYZVelocity .
+
+
+###  http://www.MetroRiskOntology.org#locatedIn
+:locatedIn rdf:type owl:ObjectProperty ;
+           rdfs:domain :AirQualitySensor ,
+                       :CrowdFlowSensors ,
+                       :DigitalCrackMeter ,
+                       :EnergyConsumptionSensors ,
+                       :EnvironmentalSensors ,
+                       :EventSensors ,
+                       :HarmfulGasDetector ,
+                       :InclinationGauge ,
+                       :LowPowerDisplacementSensor ,
+                       :LowPowerStrainSensor ,
+                       :LowPowerStressSensor ,
+                       :MachineVisionSensor ,
+                       :MatchingCurrentTransformer ,
+                       :NoiseSensor ,
+                       :PanoramicCamera ,
+                       :PeopleCountingSensor ,
+                       :Sensor ,
+                       :SmokeSensor ,
+                       :StructuralSensors ,
+                       :TemperatureAndHumiditySensor ,
+                       :TemperatureSensor ,
+                       :ThermalImagingCamera ,
+                       :UltrasonicFlowRateSensor ,
+                       :UltrasonicLevelGauge ,
+                       :UprightGrapheneSensor ,
+                       :VibrationSensor ,
+                       :WirelessMeteringMeter ;
+           rdfs:range :Location .
+
+
+###  http://www.MetroRiskOntology.org#madeAccelerationObservation
+:madeAccelerationObservation rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :madeStructuralObservation ;
+                             rdfs:domain :VibrationSensor ;
+                             rdfs:range :AccelerationMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeAngularVelocityObservation
+:madeAngularVelocityObservation rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf :madeStructuralObservation ;
+                                rdfs:domain :VibrationSensor ;
+                                rdfs:range :AngularVelocityMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeByAirQualitySensor
+:madeByAirQualitySensor rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :madeByEnvironmentalSensor ;
+                        rdfs:domain :CO2Monitoring ,
+                                    :PM10Monitoring ,
+                                    :PM2.5Monitoring ;
+                        rdfs:range :AirQualitySensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByCrowdFlowSensor
+:madeByCrowdFlowSensor rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :madeBySensor ;
+                       rdfs:domain :CrowdFlowObservation ;
+                       rdfs:range :CrowdFlowSensors .
+
+
+###  http://www.MetroRiskOntology.org#madeByDigitalCrackMeter
+:madeByDigitalCrackMeter rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :madeByStructuralSensor ;
+                         rdfs:domain :CrackOpeningDisplacementMonitoring ;
+                         rdfs:range :DigitalCrackMeter .
+
+
+###  http://www.MetroRiskOntology.org#madeByEnergyConsumptionSensor
+:madeByEnergyConsumptionSensor rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf :madeBySensor ;
+                               rdfs:domain :EnergyConsumptionObservation ;
+                               rdfs:range :EnergyConsumptionSensors .
+
+
+###  http://www.MetroRiskOntology.org#madeByEnvironmentalSensor
+:madeByEnvironmentalSensor rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :madeBySensor ;
+                           rdfs:domain :EnvironmentalObservation ;
+                           rdfs:range :EnvironmentalSensors .
+
+
+###  http://www.MetroRiskOntology.org#madeByEventSensor
+:madeByEventSensor rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :madeBySensor ;
+                   rdfs:domain :EventObservation ;
+                   rdfs:range :EventSensors .
+
+
+###  http://www.MetroRiskOntology.org#madeByHarmfulGasDetector
+:madeByHarmfulGasDetector rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :madeByEnvironmentalSensor ;
+                          rdfs:domain :HarmfulGasComponentsMonitoring ;
+                          rdfs:range :HarmfulGasDetector .
+
+
+###  http://www.MetroRiskOntology.org#madeByInclinationGauge
+:madeByInclinationGauge rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :madeByStructuralSensor ;
+                        rdfs:domain :TripleAxialTiltAngleMonitoring ;
+                        rdfs:range :InclinationGauge .
+
+
+###  http://www.MetroRiskOntology.org#madeByLowPowerDisplacementSensor
+:madeByLowPowerDisplacementSensor rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :madeByStructuralSensor ;
+                                  rdfs:domain :DisplacementMonitoring ;
+                                  rdfs:range :LowPowerDisplacementSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByLowPowerStrainSensor
+:madeByLowPowerStrainSensor rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :madeByStructuralSensor ;
+                            rdfs:domain :StrainMonitoring ;
+                            rdfs:range :LowPowerStrainSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByLowPowerStressSensor
+:madeByLowPowerStressSensor rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :madeByStructuralSensor ;
+                            rdfs:domain :StressMonitoring ;
+                            rdfs:range :LowPowerStressSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByMachineVisionSensor
+:madeByMachineVisionSensor rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :madeByCrowdFlowSensor ;
+                           rdfs:domain :CrowdFlowDirectionMonitoring ,
+                                       :IndividualSpeedMonitoring ,
+                                       :QueueSizeMonitoring ;
+                           rdfs:range :MachineVisionSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByMatchingCurrentTransformer
+:madeByMatchingCurrentTransformer rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :madeByEnergyConsumptionSensor ;
+                                  rdfs:domain :CurrentMonitoring ;
+                                  rdfs:range :MatchingCurrentTransformer .
+
+
+###  http://www.MetroRiskOntology.org#madeByNoiseSensor
+:madeByNoiseSensor rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :madeByEnvironmentalSensor ;
+                   rdfs:domain :NoiseMonitoring ;
+                   rdfs:range :NoiseSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByPanoramicCamera
+:madeByPanoramicCamera rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :madeByEventSensor ;
+                       rdfs:domain :FallingMonitoring ,
+                                   :RunningMonitoring ;
+                       rdfs:range :PanoramicCamera .
+
+
+###  http://www.MetroRiskOntology.org#madeByPeopleCountingSensor
+:madeByPeopleCountingSensor rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :madeByCrowdFlowSensor ;
+                            rdfs:domain :CrowdFlowRateMonitoring ,
+                                        :PersonnelDensityMonitoring ,
+                                        :TotalPopulationInTheAreaMonitoring ;
+                            rdfs:range :PeopleCountingSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeBySensor
+:madeBySensor rdf:type owl:ObjectProperty ;
+              rdfs:domain :Observation ;
+              rdfs:range :Sensor .
+
+
+###  http://www.MetroRiskOntology.org#madeBySmokeSensor
+:madeBySmokeSensor rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :madeByEnvironmentalSensor ;
+                   rdfs:domain :SmokeConcentrationMonitoring ;
+                   rdfs:range :SmokeSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByStructuralSensor
+:madeByStructuralSensor rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :madeBySensor ;
+                        rdfs:domain :StructuralObservation ;
+                        rdfs:range :StructuralSensors .
+
+
+###  http://www.MetroRiskOntology.org#madeByTemperatureAndHumiditySensor
+:madeByTemperatureAndHumiditySensor rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf :madeByEnvironmentalSensor ;
+                                    rdfs:domain :HumidityMonitoring ,
+                                                :TemperatureMonitoring ;
+                                    rdfs:range :TemperatureAndHumiditySensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByTemperatureSensor
+:madeByTemperatureSensor rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :madeByEnergyConsumptionSensor ;
+                         rdfs:domain :PipeTemperatureMonitoring ;
+                         rdfs:range :TemperatureSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByThermalImagingCamera
+:madeByThermalImagingCamera rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :madeByEnvironmentalSensor ;
+                            rdfs:domain :FireSourceLocationMonitoring ,
+                                        :FlameTemperatureMonitoring ;
+                            rdfs:range :ThermalImagingCamera .
+
+
+###  http://www.MetroRiskOntology.org#madeByUltrasonicFlowRateSensor
+:madeByUltrasonicFlowRateSensor rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf :madeByEnvironmentalSensor ;
+                                rdfs:domain :WaterFlowVelocityMonitoring ;
+                                rdfs:range :UltrasonicFlowRateSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByUltrasonicLevelGauge
+:madeByUltrasonicLevelGauge rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :madeByEnvironmentalSensor ;
+                            rdfs:domain :WaterDepthMonitoring ;
+                            rdfs:range :UltrasonicLevelGauge .
+
+
+###  http://www.MetroRiskOntology.org#madeByUprightGrapheneSensor
+:madeByUprightGrapheneSensor rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :madeByStructuralSensor ;
+                             rdfs:domain :WaterLeakageMonitoring ;
+                             rdfs:range :UprightGrapheneSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByVibrationSensor
+:madeByVibrationSensor rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :madeByStructuralSensor ;
+                       rdfs:domain :AccelerationMonitoring ,
+                                   :AngularVelocityMonitoring ,
+                                   :XYZVelocityMonitoring ;
+                       rdfs:range :VibrationSensor .
+
+
+###  http://www.MetroRiskOntology.org#madeByWirelessMeteringMeter
+:madeByWirelessMeteringMeter rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :madeByEnergyConsumptionSensor ;
+                             rdfs:domain :ElectricEnergyMonitoring ,
+                                         :PowerMonitoring ,
+                                         :VoltageMonitoring ;
+                             rdfs:range :WirelessMeteringMeter .
+
+
+###  http://www.MetroRiskOntology.org#madeCO2Observation
+:madeCO2Observation rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                    rdfs:domain :AirQualitySensor ;
+                    rdfs:range :CO2Monitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeCrackOpeningDisplacementObservation
+:madeCrackOpeningDisplacementObservation rdf:type owl:ObjectProperty ;
+                                         rdfs:subPropertyOf :madeStructuralObservation ;
+                                         rdfs:domain :DigitalCrackMeter ;
+                                         rdfs:range :CrackOpeningDisplacementMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeCrowdFlowDirectionObservation
+:madeCrowdFlowDirectionObservation rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf :madeCrowdFlowObservation ;
+                                   rdfs:domain :MachineVisionSensor ;
+                                   rdfs:range :CrowdFlowDirectionMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeCrowdFlowObservation
+:madeCrowdFlowObservation rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :madeObservation ;
+                          rdfs:domain :CrowdFlowSensors ;
+                          rdfs:range :CrowdFlowObservation .
+
+
+###  http://www.MetroRiskOntology.org#madeCrowdFlowRateObservation
+:madeCrowdFlowRateObservation rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :madeCrowdFlowObservation ;
+                              rdfs:domain :PeopleCountingSensor ;
+                              rdfs:range :CrowdFlowRateMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeCurrentObservation
+:madeCurrentObservation rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :madeEnergyConsumptionObservation ;
+                        rdfs:domain :MatchingCurrentTransformer ;
+                        rdfs:range :CurrentMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeDisplacementObservation
+:madeDisplacementObservation rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :madeStructuralObservation ;
+                             rdfs:domain :LowPowerDisplacementSensor ;
+                             rdfs:range :DisplacementMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeElectricEnergyObservation
+:madeElectricEnergyObservation rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf :madeEnergyConsumptionObservation ;
+                               rdfs:domain :WirelessMeteringMeter ;
+                               rdfs:range :ElectricEnergyMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeEnergyConsumptionObservation
+:madeEnergyConsumptionObservation rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :madeObservation ;
+                                  rdfs:domain :EnergyConsumptionSensors ;
+                                  rdfs:range :EnergyConsumptionObservation .
+
+
+###  http://www.MetroRiskOntology.org#madeEnvironmentalObservation
+:madeEnvironmentalObservation rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :madeObservation ;
+                              rdfs:domain :EnvironmentalSensors ;
+                              rdfs:range :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#madeEventObservation
+:madeEventObservation rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :madeObservation ;
+                      rdfs:domain :EventSensors ;
+                      rdfs:range :EventObservation .
+
+
+###  http://www.MetroRiskOntology.org#madeFallingObservation
+:madeFallingObservation rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :madeEventObservation ;
+                        rdfs:domain :PanoramicCamera ;
+                        rdfs:range :FallingMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeFireSourceLocationObservation
+:madeFireSourceLocationObservation rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                                   rdfs:domain :ThermalImagingCamera ;
+                                   rdfs:range :FireSourceLocationMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeFlameTemperatureObservation
+:madeFlameTemperatureObservation rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                                 rdfs:domain :ThermalImagingCamera ;
+                                 rdfs:range :FlameTemperatureMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeHarmfulGasComponentsObservation
+:madeHarmfulGasComponentsObservation rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                                     rdfs:domain :HarmfulGasDetector ;
+                                     rdfs:range :HarmfulGasComponentsMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeHumidityObservation
+:madeHumidityObservation rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                         rdfs:domain :TemperatureAndHumiditySensor ;
+                         rdfs:range :HumidityMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeIndividualSpeedObservation
+:madeIndividualSpeedObservation rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf :madeCrowdFlowObservation ;
+                                rdfs:domain :MachineVisionSensor ;
+                                rdfs:range :IndividualSpeedMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeNoiseObservation
+:madeNoiseObservation rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                      rdfs:domain :NoiseSensor ;
+                      rdfs:range :NoiseMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeObservation
+:madeObservation rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Sensor ;
+                 rdfs:range :Observation .
+
+
+###  http://www.MetroRiskOntology.org#madePM10Observation
+:madePM10Observation rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                     rdfs:domain :AirQualitySensor ;
+                     rdfs:range :PM10Monitoring .
+
+
+###  http://www.MetroRiskOntology.org#madePM2.5Observation
+:madePM2.5Observation rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                      rdfs:domain :AirQualitySensor ;
+                      rdfs:range :PM2.5Monitoring .
+
+
+###  http://www.MetroRiskOntology.org#madePersonnelDensityObservation
+:madePersonnelDensityObservation rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf :madeCrowdFlowObservation ;
+                                 rdfs:domain :PeopleCountingSensor ;
+                                 rdfs:range :PersonnelDensityMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madePipeTemperatureObservation
+:madePipeTemperatureObservation rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf :madeEnergyConsumptionObservation ;
+                                rdfs:domain :TemperatureSensor ;
+                                rdfs:range :PipeTemperatureMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madePowerObservation
+:madePowerObservation rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :madeEnergyConsumptionObservation ;
+                      rdfs:domain :WirelessMeteringMeter ;
+                      rdfs:range :PowerMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeQueueSizeObservation
+:madeQueueSizeObservation rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :madeCrowdFlowObservation ;
+                          rdfs:domain :MachineVisionSensor ;
+                          rdfs:range :QueueSizeMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeRunningObservation
+:madeRunningObservation rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :madeEventObservation ;
+                        rdfs:domain :PanoramicCamera ;
+                        rdfs:range :RunningMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeSmokeConcentrationObservation
+:madeSmokeConcentrationObservation rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                                   rdfs:domain :SmokeSensor ;
+                                   rdfs:range :SmokeConcentrationMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeStrainObservation
+:madeStrainObservation rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :madeStructuralObservation ;
+                       rdfs:domain :LowPowerStrainSensor ;
+                       rdfs:range :StrainMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeStressObservation
+:madeStressObservation rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :madeStructuralObservation ;
+                       rdfs:domain :LowPowerStressSensor ;
+                       rdfs:range :StressMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeStructuralObservation
+:madeStructuralObservation rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :madeObservation ;
+                           rdfs:domain :StructuralSensors ;
+                           rdfs:range :StructuralObservation .
+
+
+###  http://www.MetroRiskOntology.org#madeTemperatureObservation
+:madeTemperatureObservation rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                            rdfs:domain :TemperatureAndHumiditySensor ;
+                            rdfs:range :TemperatureMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeTotalPopulationInTheAreObservation
+:madeTotalPopulationInTheAreObservation rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf :madeCrowdFlowObservation ;
+                                        rdfs:domain :PeopleCountingSensor ;
+                                        rdfs:range :TotalPopulationInTheAreaMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeTripleAxialTiltAngleObservation
+:madeTripleAxialTiltAngleObservation rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf :madeStructuralObservation ;
+                                     rdfs:domain :InclinationGauge ;
+                                     rdfs:range :TripleAxialTiltAngleMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeVoltageObservation
+:madeVoltageObservation rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :madeEnergyConsumptionObservation ;
+                        rdfs:domain :WirelessMeteringMeter ;
+                        rdfs:range :VoltageMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeWaterDepthObservation
+:madeWaterDepthObservation rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                           rdfs:domain :UltrasonicLevelGauge ;
+                           rdfs:range :WaterDepthMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeWaterFlowVelocityObservation
+:madeWaterFlowVelocityObservation rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :madeEnvironmentalObservation ;
+                                  rdfs:domain :UltrasonicFlowRateSensor ;
+                                  rdfs:range :WaterFlowVelocityMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeWaterLeakageObservation
+:madeWaterLeakageObservation rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :madeStructuralObservation ;
+                             rdfs:domain :UprightGrapheneSensor ;
+                             rdfs:range :WaterLeakageMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#madeXYZVelocityObservation
+:madeXYZVelocityObservation rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :madeStructuralObservation ;
+                            rdfs:domain :VibrationSensor ;
+                            rdfs:range :XYZVelocityMonitoring .
+
+
+###  http://www.MetroRiskOntology.org#observedProperty
+:observedProperty rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Observation ;
+                  rdfs:range :ObservableProperty .
+
+
+###  http://www.MetroRiskOntology.org#observes
+:observes rdf:type owl:ObjectProperty ;
+          rdfs:domain :Sensor ;
+          rdfs:range :ObservableProperty .
+
+
+###  http://www.MetroRiskOntology.org#observesAcceleration
+:observesAcceleration rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :observesStructure ;
+                      rdfs:domain :VibrationSensor ;
+                      rdfs:range :Acceleration .
+
+
+###  http://www.MetroRiskOntology.org#observesAngularVelocity
+:observesAngularVelocity rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :observesStructure ;
+                         rdfs:domain :VibrationSensor ;
+                         rdfs:range :AngularVelocity .
+
+
+###  http://www.MetroRiskOntology.org#observesCO2
+:observesCO2 rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :observesEnvironment ;
+             rdfs:domain :AirQualitySensor ;
+             rdfs:range :CO2Concentration .
+
+
+###  http://www.MetroRiskOntology.org#observesCrackOpeningDisplacement
+:observesCrackOpeningDisplacement rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :observesStructure ;
+                                  rdfs:domain :DigitalCrackMeter ;
+                                  rdfs:range :CrackOpeningDisplacement .
+
+
+###  http://www.MetroRiskOntology.org#observesCrowdFlow
+:observesCrowdFlow rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :observes ;
+                   rdfs:domain :CrowdFlowSensors ;
+                   rdfs:range :CrowdFlowProperty .
+
+
+###  http://www.MetroRiskOntology.org#observesCrowdFlowDirection
+:observesCrowdFlowDirection rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :observesCrowdFlow ;
+                            rdfs:domain :MachineVisionSensor ;
+                            rdfs:range :CrowdFlowDirection .
+
+
+###  http://www.MetroRiskOntology.org#observesCrowdFlowRate
+:observesCrowdFlowRate rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :observesCrowdFlow ;
+                       rdfs:domain :PeopleCountingSensor ;
+                       rdfs:range :CrowdFlowRate .
+
+
+###  http://www.MetroRiskOntology.org#observesCurrent
+:observesCurrent rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :observesEnergyConsumption ;
+                 rdfs:domain :MatchingCurrentTransformer ;
+                 rdfs:range :Current .
+
+
+###  http://www.MetroRiskOntology.org#observesDisplacement
+:observesDisplacement rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :observesStructure ;
+                      rdfs:domain :LowPowerDisplacementSensor ;
+                      rdfs:range :Displacement .
+
+
+###  http://www.MetroRiskOntology.org#observesElectricEnergy
+:observesElectricEnergy rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :observesEnergyConsumption ;
+                        rdfs:domain :WirelessMeteringMeter ;
+                        rdfs:range :ElectricEnergy .
+
+
+###  http://www.MetroRiskOntology.org#observesEnergyConsumption
+:observesEnergyConsumption rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :observes ;
+                           rdfs:domain :EnergyConsumptionSensors ;
+                           rdfs:range :EnergyConsumptionProperty .
+
+
+###  http://www.MetroRiskOntology.org#observesEnvironment
+:observesEnvironment rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :observes ;
+                     rdfs:domain :EnvironmentalSensors ;
+                     rdfs:range :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#observesEvent
+:observesEvent rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :observes ;
+               rdfs:domain :EventSensors ;
+               rdfs:range :EventProperty .
+
+
+###  http://www.MetroRiskOntology.org#observesFalling
+:observesFalling rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :observesEvent ;
+                 rdfs:domain :PanoramicCamera ;
+                 rdfs:range :Falling .
+
+
+###  http://www.MetroRiskOntology.org#observesFireSourceLocation
+:observesFireSourceLocation rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :observesEnvironment ;
+                            rdfs:domain :ThermalImagingCamera ;
+                            rdfs:range :FireSourceLocation .
+
+
+###  http://www.MetroRiskOntology.org#observesFlameTemperature
+:observesFlameTemperature rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :observesEnvironment ;
+                          rdfs:domain :ThermalImagingCamera ;
+                          rdfs:range :FlameTemperature .
+
+
+###  http://www.MetroRiskOntology.org#observesHarmfulGasComponents
+:observesHarmfulGasComponents rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :observesEnvironment ;
+                              rdfs:domain :HarmfulGasDetector ;
+                              rdfs:range :HarmfulGasComponents .
+
+
+###  http://www.MetroRiskOntology.org#observesHumidity
+:observesHumidity rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :observesEnvironment ;
+                  rdfs:domain :TemperatureAndHumiditySensor ;
+                  rdfs:range :Humidity .
+
+
+###  http://www.MetroRiskOntology.org#observesIndividualSpeed
+:observesIndividualSpeed rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :observesCrowdFlow ;
+                         rdfs:domain :MachineVisionSensor ;
+                         rdfs:range :IndividualSpeed .
+
+
+###  http://www.MetroRiskOntology.org#observesNoise
+:observesNoise rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :observesEnvironment ;
+               rdfs:domain :NoiseSensor ;
+               rdfs:range :NoiseDecibels .
+
+
+###  http://www.MetroRiskOntology.org#observesPM10
+:observesPM10 rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :observesEnvironment ;
+              rdfs:domain :AirQualitySensor ;
+              rdfs:range :PM10Concentration .
+
+
+###  http://www.MetroRiskOntology.org#observesPM2.5
+:observesPM2.5 rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :observesEnvironment ;
+               rdfs:domain :AirQualitySensor ;
+               rdfs:range :PM2.5Concentration .
+
+
+###  http://www.MetroRiskOntology.org#observesPersonnelDensity
+:observesPersonnelDensity rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :observesCrowdFlow ;
+                          rdfs:domain :PeopleCountingSensor ;
+                          rdfs:range :PersonnelDensity .
+
+
+###  http://www.MetroRiskOntology.org#observesPipeTemperature
+:observesPipeTemperature rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf :observesEnergyConsumption ;
+                         rdfs:domain :TemperatureSensor ;
+                         rdfs:range :PipeTemperature .
+
+
+###  http://www.MetroRiskOntology.org#observesPower
+:observesPower rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :observesEnergyConsumption ;
+               rdfs:domain :WirelessMeteringMeter ;
+               rdfs:range :Power .
+
+
+###  http://www.MetroRiskOntology.org#observesQueueSize
+:observesQueueSize rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :observesCrowdFlow ;
+                   rdfs:domain :MachineVisionSensor ;
+                   rdfs:range :QueueSize .
+
+
+###  http://www.MetroRiskOntology.org#observesRunning
+:observesRunning rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :observesEvent ;
+                 rdfs:domain :PanoramicCamera ;
+                 rdfs:range :Running .
+
+
+###  http://www.MetroRiskOntology.org#observesSmokeConcentration
+:observesSmokeConcentration rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf :observesEnvironment ;
+                            rdfs:domain :SmokeSensor ;
+                            rdfs:range :SmokeConcentration .
+
+
+###  http://www.MetroRiskOntology.org#observesStrain
+:observesStrain rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :observesStructure ;
+                rdfs:domain :LowPowerStrainSensor ;
+                rdfs:range :Strain .
+
+
+###  http://www.MetroRiskOntology.org#observesStress
+:observesStress rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :observesStructure ;
+                rdfs:domain :LowPowerStressSensor ;
+                rdfs:range :Stress .
+
+
+###  http://www.MetroRiskOntology.org#observesStructure
+:observesStructure rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :observes ;
+                   rdfs:domain :StructuralSensors ;
+                   rdfs:range :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#observesTemperature
+:observesTemperature rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :observesEnvironment ;
+                     rdfs:domain :TemperatureAndHumiditySensor ;
+                     rdfs:range :Temperature .
+
+
+###  http://www.MetroRiskOntology.org#observesTotalPopulationInTheArea
+:observesTotalPopulationInTheArea rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf :observesCrowdFlow ;
+                                  rdfs:domain :PeopleCountingSensor ;
+                                  rdfs:range :TotalPopulationInTheArea .
+
+
+###  http://www.MetroRiskOntology.org#observesTripleAxialTiltAngle
+:observesTripleAxialTiltAngle rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :observesStructure ;
+                              rdfs:domain :InclinationGauge ;
+                              rdfs:range :TripleAxialTiltAngle .
+
+
+###  http://www.MetroRiskOntology.org#observesVoltage
+:observesVoltage rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :observesEnergyConsumption ;
+                 rdfs:domain :WirelessMeteringMeter ;
+                 rdfs:range :Voltage .
+
+
+###  http://www.MetroRiskOntology.org#observesWaterDepth
+:observesWaterDepth rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :observesEnvironment ;
+                    rdfs:domain :UltrasonicLevelGauge ;
+                    rdfs:range :WaterDepth .
+
+
+###  http://www.MetroRiskOntology.org#observesWaterFlowVelocity
+:observesWaterFlowVelocity rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf :observesEnvironment ;
+                           rdfs:domain :UltrasonicFlowRateSensor ;
+                           rdfs:range :WaterFlowVelocity .
+
+
+###  http://www.MetroRiskOntology.org#observesWaterLeakage
+:observesWaterLeakage rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :observesStructure ;
+                      rdfs:domain :UprightGrapheneSensor ;
+                      rdfs:range :WaterLeakage .
+
+
+###  http://www.MetroRiskOntology.org#observesXYZVelocity
+:observesXYZVelocity rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :observesStructure ;
+                     rdfs:domain :VibrationSensor ;
+                     rdfs:range :XYZVelocity .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.MetroRiskOntology.org#hasAlarm
+:hasAlarm rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Observation ;
+          rdfs:range xsd:int .
+
+
+###  http://www.MetroRiskOntology.org#hasSimpleResult
+:hasSimpleResult rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Observation ;
+                 rdfs:range xsd:string .
+
+
+###  http://www.MetroRiskOntology.org#lastMaintenanceTime
+:lastMaintenanceTime rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Sensor ;
+                     rdfs:range xsd:dateTime .
+
+
+###  http://www.MetroRiskOntology.org#maintenanceCycle
+:maintenanceCycle rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Sensor ;
+                  rdfs:range xsd:float .
+
+
+###  http://www.MetroRiskOntology.org#operationalState
+:operationalState rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Sensor ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.MetroRiskOntology.org#resultTime
+:resultTime rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Observation ;
+            rdfs:range xsd:dateTime .
+
+
+###  http://www.MetroRiskOntology.org#valueUnit
+:valueUnit rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Observation ;
+           rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.MetroRiskOntology.org#AbnormalCrack
+:AbnormalCrack rdf:type owl:Class ;
+               rdfs:subClassOf :StructuralWarning .
+
+
+###  http://www.MetroRiskOntology.org#AbnormalEnergyConsumption
+:AbnormalEnergyConsumption rdf:type owl:Class ;
+                           rdfs:subClassOf :EnergyConsumptionWarning .
+
+
+###  http://www.MetroRiskOntology.org#AbnormalHumidity
+:AbnormalHumidity rdf:type owl:Class ;
+                  rdfs:subClassOf :EnvironmentalWarning .
+
+
+###  http://www.MetroRiskOntology.org#AbnormalNoise
+:AbnormalNoise rdf:type owl:Class ;
+               rdfs:subClassOf :EnvironmentalWarning .
+
+
+###  http://www.MetroRiskOntology.org#AbnormalStatus
+:AbnormalStatus rdf:type owl:Class .
+
+
+###  http://www.MetroRiskOntology.org#AbnormalTemperature
+:AbnormalTemperature rdf:type owl:Class ;
+                     rdfs:subClassOf :EnvironmentalWarning .
+
+
+###  http://www.MetroRiskOntology.org#AbnormalVibration
+:AbnormalVibration rdf:type owl:Class ;
+                   rdfs:subClassOf :StructuralWarning .
+
+
+###  http://www.MetroRiskOntology.org#Acceleration
+:Acceleration rdf:type owl:Class ;
+              rdfs:subClassOf :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#AccelerationMonitoring
+:AccelerationMonitoring rdf:type owl:Class ;
+                        rdfs:subClassOf :StructuralObservation .
+
+
+###  http://www.MetroRiskOntology.org#AirConditioningUnit
+:AirConditioningUnit rdf:type owl:Class ;
+                     rdfs:subClassOf :Equipment .
+
+
+###  http://www.MetroRiskOntology.org#AirQualitySensor
+:AirQualitySensor rdf:type owl:Class ;
+                  rdfs:subClassOf :EnvironmentalSensors .
+
+
+###  http://www.MetroRiskOntology.org#AirQualityWarning
+:AirQualityWarning rdf:type owl:Class ;
+                   rdfs:subClassOf :EnvironmentalWarning .
+
+
+###  http://www.MetroRiskOntology.org#Alarm
+:Alarm rdf:type owl:Class .
+
+
+###  http://www.MetroRiskOntology.org#AngularVelocity
+:AngularVelocity rdf:type owl:Class ;
+                 rdfs:subClassOf :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#AngularVelocityMonitoring
+:AngularVelocityMonitoring rdf:type owl:Class ;
+                           rdfs:subClassOf :StructuralObservation .
+
+
+###  http://www.MetroRiskOntology.org#Area
+:Area rdf:type owl:Class ;
+      rdfs:subClassOf :FeatureOfInterest .
+
+
+###  http://www.MetroRiskOntology.org#CO2Concentration
+:CO2Concentration rdf:type owl:Class ;
+                  rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#CO2Monitoring
+:CO2Monitoring rdf:type owl:Class ;
+               rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#CanopyColumn
+:CanopyColumn rdf:type owl:Class ;
+              rdfs:subClassOf :Structure .
+
+
+###  http://www.MetroRiskOntology.org#ConnectionNode
+:ConnectionNode rdf:type owl:Class ;
+                rdfs:subClassOf :Structure .
+
+
+###  http://www.MetroRiskOntology.org#CrackOpeningDisplacement
+:CrackOpeningDisplacement rdf:type owl:Class ;
+                          rdfs:subClassOf :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#CrackOpeningDisplacementMonitoring
+:CrackOpeningDisplacementMonitoring rdf:type owl:Class ;
+                                    rdfs:subClassOf :StructuralObservation .
+
+
+###  http://www.MetroRiskOntology.org#CrowdFlowDirection
+:CrowdFlowDirection rdf:type owl:Class ;
+                    rdfs:subClassOf :CrowdFlowProperty .
+
+
+###  http://www.MetroRiskOntology.org#CrowdFlowDirectionMonitoring
+:CrowdFlowDirectionMonitoring rdf:type owl:Class ;
+                              rdfs:subClassOf :CrowdFlowObservation .
+
+
+###  http://www.MetroRiskOntology.org#CrowdFlowObservation
+:CrowdFlowObservation rdf:type owl:Class ;
+                      rdfs:subClassOf :Observation .
+
+
+###  http://www.MetroRiskOntology.org#CrowdFlowProperty
+:CrowdFlowProperty rdf:type owl:Class ;
+                   rdfs:subClassOf :ObservableProperty .
+
+
+###  http://www.MetroRiskOntology.org#CrowdFlowRate
+:CrowdFlowRate rdf:type owl:Class ;
+               rdfs:subClassOf :CrowdFlowProperty .
+
+
+###  http://www.MetroRiskOntology.org#CrowdFlowRateMonitoring
+:CrowdFlowRateMonitoring rdf:type owl:Class ;
+                         rdfs:subClassOf :CrowdFlowObservation .
+
+
+###  http://www.MetroRiskOntology.org#CrowdFlowSensors
+:CrowdFlowSensors rdf:type owl:Class ;
+                  rdfs:subClassOf :Sensor .
+
+
+###  http://www.MetroRiskOntology.org#CrowdFlowWarning
+:CrowdFlowWarning rdf:type owl:Class ;
+                  rdfs:subClassOf :Alarm .
+
+
+###  http://www.MetroRiskOntology.org#Current
+:Current rdf:type owl:Class ;
+         rdfs:subClassOf :EnergyConsumptionProperty .
+
+
+###  http://www.MetroRiskOntology.org#CurrentMonitoring
+:CurrentMonitoring rdf:type owl:Class ;
+                   rdfs:subClassOf :EnergyConsumptionObservation .
+
+
+###  http://www.MetroRiskOntology.org#DigitalCrackMeter
+:DigitalCrackMeter rdf:type owl:Class ;
+                   rdfs:subClassOf :StructuralSensors .
+
+
+###  http://www.MetroRiskOntology.org#Displacement
+:Displacement rdf:type owl:Class ;
+              rdfs:subClassOf :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#DisplacementMonitoring
+:DisplacementMonitoring rdf:type owl:Class ;
+                        rdfs:subClassOf :StructuralObservation .
+
+
+###  http://www.MetroRiskOntology.org#DistributionBox
+:DistributionBox rdf:type owl:Class ;
+                 rdfs:subClassOf :Equipment .
+
+
+###  http://www.MetroRiskOntology.org#ElectricEnergy
+:ElectricEnergy rdf:type owl:Class ;
+                rdfs:subClassOf :EnergyConsumptionProperty .
+
+
+###  http://www.MetroRiskOntology.org#ElectricEnergyMonitoring
+:ElectricEnergyMonitoring rdf:type owl:Class ;
+                          rdfs:subClassOf :EnergyConsumptionObservation .
+
+
+###  http://www.MetroRiskOntology.org#EnergyConsumptionObservation
+:EnergyConsumptionObservation rdf:type owl:Class ;
+                              rdfs:subClassOf :Observation .
+
+
+###  http://www.MetroRiskOntology.org#EnergyConsumptionProperty
+:EnergyConsumptionProperty rdf:type owl:Class ;
+                           rdfs:subClassOf :ObservableProperty .
+
+
+###  http://www.MetroRiskOntology.org#EnergyConsumptionSensors
+:EnergyConsumptionSensors rdf:type owl:Class ;
+                          rdfs:subClassOf :Sensor .
+
+
+###  http://www.MetroRiskOntology.org#EnergyConsumptionWarning
+:EnergyConsumptionWarning rdf:type owl:Class ;
+                          rdfs:subClassOf :Alarm .
+
+
+###  http://www.MetroRiskOntology.org#EnvironmentalObservation
+:EnvironmentalObservation rdf:type owl:Class ;
+                          rdfs:subClassOf :Observation .
+
+
+###  http://www.MetroRiskOntology.org#EnvironmentalProperty
+:EnvironmentalProperty rdf:type owl:Class ;
+                       rdfs:subClassOf :ObservableProperty .
+
+
+###  http://www.MetroRiskOntology.org#EnvironmentalSensors
+:EnvironmentalSensors rdf:type owl:Class ;
+                      rdfs:subClassOf :Sensor .
+
+
+###  http://www.MetroRiskOntology.org#EnvironmentalWarning
+:EnvironmentalWarning rdf:type owl:Class ;
+                      rdfs:subClassOf :Alarm .
+
+
+###  http://www.MetroRiskOntology.org#Equipment
+:Equipment rdf:type owl:Class ;
+           rdfs:subClassOf :FeatureOfInterest .
+
+
+###  http://www.MetroRiskOntology.org#EventObservation
+:EventObservation rdf:type owl:Class ;
+                  rdfs:subClassOf :Observation .
+
+
+###  http://www.MetroRiskOntology.org#EventProperty
+:EventProperty rdf:type owl:Class ;
+               rdfs:subClassOf :ObservableProperty .
+
+
+###  http://www.MetroRiskOntology.org#EventSensors
+:EventSensors rdf:type owl:Class ;
+              rdfs:subClassOf :Sensor .
+
+
+###  http://www.MetroRiskOntology.org#EventWarning
+:EventWarning rdf:type owl:Class ;
+              rdfs:subClassOf :Alarm .
+
+
+###  http://www.MetroRiskOntology.org#Falling
+:Falling rdf:type owl:Class ;
+         rdfs:subClassOf :EventProperty .
+
+
+###  http://www.MetroRiskOntology.org#FallingEvent
+:FallingEvent rdf:type owl:Class ;
+              rdfs:subClassOf :EventWarning .
+
+
+###  http://www.MetroRiskOntology.org#FallingMonitoring
+:FallingMonitoring rdf:type owl:Class ;
+                   rdfs:subClassOf :EventObservation .
+
+
+###  http://www.MetroRiskOntology.org#FeatureOfInterest
+:FeatureOfInterest rdf:type owl:Class .
+
+
+###  http://www.MetroRiskOntology.org#FireSourceLocation
+:FireSourceLocation rdf:type owl:Class ;
+                    rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#FireSourceLocationMonitoring
+:FireSourceLocationMonitoring rdf:type owl:Class ;
+                              rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#FireWarning
+:FireWarning rdf:type owl:Class ;
+             rdfs:subClassOf :EnvironmentalWarning .
+
+
+###  http://www.MetroRiskOntology.org#FlameTemperature
+:FlameTemperature rdf:type owl:Class ;
+                  rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#FlameTemperatureMonitoring
+:FlameTemperatureMonitoring rdf:type owl:Class ;
+                            rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#FloodWarning
+:FloodWarning rdf:type owl:Class ;
+              rdfs:subClassOf :EnvironmentalWarning .
+
+
+###  http://www.MetroRiskOntology.org#GlassFacadeCable
+:GlassFacadeCable rdf:type owl:Class ;
+                  rdfs:subClassOf :Structure .
+
+
+###  http://www.MetroRiskOntology.org#HarmfulGasComponents
+:HarmfulGasComponents rdf:type owl:Class ;
+                      rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#HarmfulGasComponentsMonitoring
+:HarmfulGasComponentsMonitoring rdf:type owl:Class ;
+                                rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#HarmfulGasDetector
+:HarmfulGasDetector rdf:type owl:Class ;
+                    rdfs:subClassOf :EnvironmentalSensors .
+
+
+###  http://www.MetroRiskOntology.org#Humidity
+:Humidity rdf:type owl:Class ;
+          rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#HumidityMonitoring
+:HumidityMonitoring rdf:type owl:Class ;
+                    rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#InclinationGauge
+:InclinationGauge rdf:type owl:Class ;
+                  rdfs:subClassOf :StructuralSensors .
+
+
+###  http://www.MetroRiskOntology.org#IndividualSpeed
+:IndividualSpeed rdf:type owl:Class ;
+                 rdfs:subClassOf :CrowdFlowProperty .
+
+
+###  http://www.MetroRiskOntology.org#IndividualSpeedMonitoring
+:IndividualSpeedMonitoring rdf:type owl:Class ;
+                           rdfs:subClassOf :CrowdFlowObservation .
+
+
+###  http://www.MetroRiskOntology.org#LargeCrowdFlowWarning
+:LargeCrowdFlowWarning rdf:type owl:Class ;
+                       rdfs:subClassOf :CrowdFlowWarning .
+
+
+###  http://www.MetroRiskOntology.org#Location
+:Location rdf:type owl:Class .
+
+
+###  http://www.MetroRiskOntology.org#LowPowerDisplacementSensor
+:LowPowerDisplacementSensor rdf:type owl:Class ;
+                            rdfs:subClassOf :StructuralSensors .
+
+
+###  http://www.MetroRiskOntology.org#LowPowerStrainSensor
+:LowPowerStrainSensor rdf:type owl:Class ;
+                      rdfs:subClassOf :StructuralSensors .
+
+
+###  http://www.MetroRiskOntology.org#LowPowerStressSensor
+:LowPowerStressSensor rdf:type owl:Class ;
+                      rdfs:subClassOf :StructuralSensors .
+
+
+###  http://www.MetroRiskOntology.org#MachineVisionSensor
+:MachineVisionSensor rdf:type owl:Class ;
+                     rdfs:subClassOf :CrowdFlowSensors .
+
+
+###  http://www.MetroRiskOntology.org#MaintenanceOverdue
+:MaintenanceOverdue rdf:type owl:Class ;
+                    rdfs:subClassOf :AbnormalStatus .
+
+
+###  http://www.MetroRiskOntology.org#MatchingCurrentTransformer
+:MatchingCurrentTransformer rdf:type owl:Class ;
+                            rdfs:subClassOf :EnergyConsumptionSensors .
+
+
+###  http://www.MetroRiskOntology.org#NoiseDecibels
+:NoiseDecibels rdf:type owl:Class ;
+               rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#NoiseMonitoring
+:NoiseMonitoring rdf:type owl:Class ;
+                 rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#NoiseSensor
+:NoiseSensor rdf:type owl:Class ;
+             rdfs:subClassOf :EnvironmentalSensors .
+
+
+###  http://www.MetroRiskOntology.org#NotWorking
+:NotWorking rdf:type owl:Class ;
+            rdfs:subClassOf :AbnormalStatus .
+
+
+###  http://www.MetroRiskOntology.org#ObservableProperty
+:ObservableProperty rdf:type owl:Class .
+
+
+###  http://www.MetroRiskOntology.org#Observation
+:Observation rdf:type owl:Class .
+
+
+###  http://www.MetroRiskOntology.org#PM10Concentration
+:PM10Concentration rdf:type owl:Class ;
+                   rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#PM10Monitoring
+:PM10Monitoring rdf:type owl:Class ;
+                rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#PM2.5Concentration
+:PM2.5Concentration rdf:type owl:Class ;
+                    rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#PM2.5Monitoring
+:PM2.5Monitoring rdf:type owl:Class ;
+                 rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#PanoramicCamera
+:PanoramicCamera rdf:type owl:Class ;
+                 rdfs:subClassOf :EventSensors ;
+                 rdfs:comment """range: 360°
+resolution: 8K (7680x4320 pixels)""" .
+
+
+###  http://www.MetroRiskOntology.org#PeopleCountingSensor
+:PeopleCountingSensor rdf:type owl:Class ;
+                      rdfs:subClassOf :CrowdFlowSensors ;
+                      rdfs:comment """accuracy: ±0.2%
+passenger flow_resolution: 1 person
+density_resolution: 0.1 person/m²
+queue length_resolution: 1 person
+trajectory_resolution: 1 person
+speed_resolution: 0.1 m/s
+large crowd_resolution: 1 person
+direction: bidirectional recognition""" .
+
+
+###  http://www.MetroRiskOntology.org#PersonnelDensity
+:PersonnelDensity rdf:type owl:Class ;
+                  rdfs:subClassOf :CrowdFlowProperty .
+
+
+###  http://www.MetroRiskOntology.org#PersonnelDensityMonitoring
+:PersonnelDensityMonitoring rdf:type owl:Class ;
+                            rdfs:subClassOf :CrowdFlowObservation .
+
+
+###  http://www.MetroRiskOntology.org#Pillar
+:Pillar rdf:type owl:Class ;
+        rdfs:subClassOf :Structure .
+
+
+###  http://www.MetroRiskOntology.org#PipeTemperature
+:PipeTemperature rdf:type owl:Class ;
+                 rdfs:subClassOf :EnergyConsumptionProperty .
+
+
+###  http://www.MetroRiskOntology.org#PipeTemperatureMonitoring
+:PipeTemperatureMonitoring rdf:type owl:Class ;
+                           rdfs:subClassOf :EnergyConsumptionObservation .
+
+
+###  http://www.MetroRiskOntology.org#PlatformLevel
+:PlatformLevel rdf:type owl:Class ;
+               rdfs:subClassOf :Area .
+
+
+###  http://www.MetroRiskOntology.org#Power
+:Power rdf:type owl:Class ;
+       rdfs:subClassOf :EnergyConsumptionProperty .
+
+
+###  http://www.MetroRiskOntology.org#PowerMonitoring
+:PowerMonitoring rdf:type owl:Class ;
+                 rdfs:subClassOf :EnergyConsumptionObservation .
+
+
+###  http://www.MetroRiskOntology.org#PumpAssembly
+:PumpAssembly rdf:type owl:Class ;
+              rdfs:subClassOf :Equipment .
+
+
+###  http://www.MetroRiskOntology.org#QueueSize
+:QueueSize rdf:type owl:Class ;
+           rdfs:subClassOf :CrowdFlowProperty .
+
+
+###  http://www.MetroRiskOntology.org#QueueSizeMonitoring
+:QueueSizeMonitoring rdf:type owl:Class ;
+                     rdfs:subClassOf :CrowdFlowObservation .
+
+
+###  http://www.MetroRiskOntology.org#Running
+:Running rdf:type owl:Class ;
+         rdfs:subClassOf :EventProperty .
+
+
+###  http://www.MetroRiskOntology.org#RunningEvent
+:RunningEvent rdf:type owl:Class ;
+              rdfs:subClassOf :EventWarning .
+
+
+###  http://www.MetroRiskOntology.org#RunningMonitoring
+:RunningMonitoring rdf:type owl:Class ;
+                   rdfs:subClassOf :EventObservation .
+
+
+###  http://www.MetroRiskOntology.org#Sensor
+:Sensor rdf:type owl:Class .
+
+
+###  http://www.MetroRiskOntology.org#SmokeConcentration
+:SmokeConcentration rdf:type owl:Class ;
+                    rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#SmokeConcentrationMonitoring
+:SmokeConcentrationMonitoring rdf:type owl:Class ;
+                              rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#SmokeSensor
+:SmokeSensor rdf:type owl:Class ;
+             rdfs:subClassOf :EnvironmentalSensors .
+
+
+###  http://www.MetroRiskOntology.org#StationConcourseLevel
+:StationConcourseLevel rdf:type owl:Class ;
+                       rdfs:subClassOf :Area .
+
+
+###  http://www.MetroRiskOntology.org#StationForecourt
+:StationForecourt rdf:type owl:Class ;
+                  rdfs:subClassOf :Area .
+
+
+###  http://www.MetroRiskOntology.org#Strain
+:Strain rdf:type owl:Class ;
+        rdfs:subClassOf :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#StrainMonitoring
+:StrainMonitoring rdf:type owl:Class ;
+                  rdfs:subClassOf :StructuralObservation .
+
+
+###  http://www.MetroRiskOntology.org#Stress
+:Stress rdf:type owl:Class ;
+        rdfs:subClassOf :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#StressMonitoring
+:StressMonitoring rdf:type owl:Class ;
+                  rdfs:subClassOf :StructuralObservation .
+
+
+###  http://www.MetroRiskOntology.org#StructuralColumn
+:StructuralColumn rdf:type owl:Class ;
+                  rdfs:subClassOf :Structure .
+
+
+###  http://www.MetroRiskOntology.org#StructuralCorrosion
+:StructuralCorrosion rdf:type owl:Class ;
+                     rdfs:subClassOf :StructuralWarning .
+
+
+###  http://www.MetroRiskOntology.org#StructuralDeformation
+:StructuralDeformation rdf:type owl:Class ;
+                       rdfs:subClassOf :StructuralWarning .
+
+
+###  http://www.MetroRiskOntology.org#StructuralDisplacement
+:StructuralDisplacement rdf:type owl:Class ;
+                        rdfs:subClassOf :StructuralWarning .
+
+
+###  http://www.MetroRiskOntology.org#StructuralObservation
+:StructuralObservation rdf:type owl:Class ;
+                       rdfs:subClassOf :Observation .
+
+
+###  http://www.MetroRiskOntology.org#StructuralOverload
+:StructuralOverload rdf:type owl:Class ;
+                    rdfs:subClassOf :StructuralWarning .
+
+
+###  http://www.MetroRiskOntology.org#StructuralProperty
+:StructuralProperty rdf:type owl:Class ;
+                    rdfs:subClassOf :ObservableProperty .
+
+
+###  http://www.MetroRiskOntology.org#StructuralSensors
+:StructuralSensors rdf:type owl:Class ;
+                   rdfs:subClassOf :Sensor .
+
+
+###  http://www.MetroRiskOntology.org#StructuralTilt
+:StructuralTilt rdf:type owl:Class ;
+                rdfs:subClassOf :StructuralWarning .
+
+
+###  http://www.MetroRiskOntology.org#StructuralWarning
+:StructuralWarning rdf:type owl:Class ;
+                   rdfs:subClassOf :Alarm .
+
+
+###  http://www.MetroRiskOntology.org#Structure
+:Structure rdf:type owl:Class ;
+           rdfs:subClassOf :FeatureOfInterest .
+
+
+###  http://www.MetroRiskOntology.org#Temperature
+:Temperature rdf:type owl:Class ;
+             rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#TemperatureAndHumiditySensor
+:TemperatureAndHumiditySensor rdf:type owl:Class ;
+                              rdfs:subClassOf :EnvironmentalSensors .
+
+
+###  http://www.MetroRiskOntology.org#TemperatureMonitoring
+:TemperatureMonitoring rdf:type owl:Class ;
+                       rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#TemperatureSensor
+:TemperatureSensor rdf:type owl:Class ;
+                   rdfs:subClassOf :EnergyConsumptionSensors .
+
+
+###  http://www.MetroRiskOntology.org#ThermalImagingCamera
+:ThermalImagingCamera rdf:type owl:Class ;
+                      rdfs:subClassOf :EnvironmentalSensors .
+
+
+###  http://www.MetroRiskOntology.org#TotalPopulationInTheArea
+:TotalPopulationInTheArea rdf:type owl:Class ;
+                          rdfs:subClassOf :CrowdFlowProperty .
+
+
+###  http://www.MetroRiskOntology.org#TotalPopulationInTheAreaMonitoring
+:TotalPopulationInTheAreaMonitoring rdf:type owl:Class ;
+                                    rdfs:subClassOf :CrowdFlowObservation .
+
+
+###  http://www.MetroRiskOntology.org#TransferCorridor
+:TransferCorridor rdf:type owl:Class ;
+                  rdfs:subClassOf :Area .
+
+
+###  http://www.MetroRiskOntology.org#TripleAxialTiltAngle
+:TripleAxialTiltAngle rdf:type owl:Class ;
+                      rdfs:subClassOf :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#TripleAxialTiltAngleMonitoring
+:TripleAxialTiltAngleMonitoring rdf:type owl:Class ;
+                                rdfs:subClassOf :StructuralObservation .
+
+
+###  http://www.MetroRiskOntology.org#Truss
+:Truss rdf:type owl:Class ;
+       rdfs:subClassOf :Structure .
+
+
+###  http://www.MetroRiskOntology.org#UltrasonicFlowRateSensor
+:UltrasonicFlowRateSensor rdf:type owl:Class ;
+                          rdfs:subClassOf :EnvironmentalSensors .
+
+
+###  http://www.MetroRiskOntology.org#UltrasonicLevelGauge
+:UltrasonicLevelGauge rdf:type owl:Class ;
+                      rdfs:subClassOf :EnvironmentalSensors .
+
+
+###  http://www.MetroRiskOntology.org#UprightGrapheneSensor
+:UprightGrapheneSensor rdf:type owl:Class ;
+                       rdfs:subClassOf :StructuralSensors .
+
+
+###  http://www.MetroRiskOntology.org#VibrationSensor
+:VibrationSensor rdf:type owl:Class ;
+                 rdfs:subClassOf :StructuralSensors .
+
+
+###  http://www.MetroRiskOntology.org#Voltage
+:Voltage rdf:type owl:Class ;
+         rdfs:subClassOf :EnergyConsumptionProperty .
+
+
+###  http://www.MetroRiskOntology.org#VoltageMonitoring
+:VoltageMonitoring rdf:type owl:Class ;
+                   rdfs:subClassOf :EnergyConsumptionObservation .
+
+
+###  http://www.MetroRiskOntology.org#WaitingHall
+:WaitingHall rdf:type owl:Class ;
+             rdfs:subClassOf :Area .
+
+
+###  http://www.MetroRiskOntology.org#WaterDepth
+:WaterDepth rdf:type owl:Class ;
+            rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#WaterDepthMonitoring
+:WaterDepthMonitoring rdf:type owl:Class ;
+                      rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#WaterFlowVelocity
+:WaterFlowVelocity rdf:type owl:Class ;
+                   rdfs:subClassOf :EnvironmentalProperty .
+
+
+###  http://www.MetroRiskOntology.org#WaterFlowVelocityMonitoring
+:WaterFlowVelocityMonitoring rdf:type owl:Class ;
+                             rdfs:subClassOf :EnvironmentalObservation .
+
+
+###  http://www.MetroRiskOntology.org#WaterLeakage
+:WaterLeakage rdf:type owl:Class ;
+              rdfs:subClassOf :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#WaterLeakageMonitoring
+:WaterLeakageMonitoring rdf:type owl:Class ;
+                        rdfs:subClassOf :StructuralObservation .
+
+
+###  http://www.MetroRiskOntology.org#WirelessMeteringMeter
+:WirelessMeteringMeter rdf:type owl:Class ;
+                       rdfs:subClassOf :EnergyConsumptionSensors .
+
+
+###  http://www.MetroRiskOntology.org#XYZVelocity
+:XYZVelocity rdf:type owl:Class ;
+             rdfs:subClassOf :StructuralProperty .
+
+
+###  http://www.MetroRiskOntology.org#XYZVelocityMonitoring
+:XYZVelocityMonitoring rdf:type owl:Class ;
+                       rdfs:subClassOf :StructuralObservation .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.MetroRiskOntology.org#RS485烟雾传感器001
+:RS485烟雾传感器001 rdf:type owl:NamedIndividual ,
+                        :SmokeSensor .
+
+
+###  http://www.MetroRiskOntology.org#DS-2TD6237T-50H4L/W001
+<http://www.MetroRiskOntology.org#DS-2TD6237T-50H4L/W001> rdf:type owl:NamedIndividual ,
+                                                                   :ThermalImagingCamera .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
