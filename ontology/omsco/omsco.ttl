@@ -664,7 +664,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
          rdfs:domain :CrowdFlowObservation ,
                      :EnvironmentalObservation ,
                      :EventObservation ;
-         rdfs:range :Area .
+         rdfs:range :AreaFOI .
 
 
 ###  http://www.MetroRiskOntology.org#hasCO2Property
@@ -724,7 +724,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 ###  http://www.MetroRiskOntology.org#hasCrowdFlowProperty
 :hasCrowdFlowProperty rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf :hasProperty ;
-                      rdfs:domain :Area ;
+                      rdfs:domain :AreaFOI ;
                       rdfs:range :CrowdFlowProperty .
 
 
@@ -783,7 +783,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 ###  http://www.MetroRiskOntology.org#hasEnergyConsumptionProperty
 :hasEnergyConsumptionProperty rdf:type owl:ObjectProperty ;
                               rdfs:subPropertyOf :hasProperty ;
-                              rdfs:domain :Equipment ;
+                              rdfs:domain :EquipmentFOI ;
                               rdfs:range :EnergyConsumptionProperty .
 
 
@@ -797,7 +797,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 ###  http://www.MetroRiskOntology.org#hasEnvironmentalProperty
 :hasEnvironmentalProperty rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf :hasProperty ;
-                          rdfs:domain :Area ;
+                          rdfs:domain :AreaFOI ;
                           rdfs:range :EnvironmentalProperty .
 
 
@@ -805,7 +805,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 :hasEquipment rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :hasFeatureOfInterest ;
               rdfs:domain :EnergyConsumptionObservation ;
-              rdfs:range :Equipment .
+              rdfs:range :EquipmentFOI .
 
 
 ###  http://www.MetroRiskOntology.org#hasEventProblemOf
@@ -818,7 +818,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 ###  http://www.MetroRiskOntology.org#hasEventProperty
 :hasEventProperty rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf :hasProperty ;
-                  rdfs:domain :Area ;
+                  rdfs:domain :AreaFOI ;
                   rdfs:range :EventProperty .
 
 
@@ -1198,7 +1198,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 ###  http://www.MetroRiskOntology.org#hasStructuralProperty
 :hasStructuralProperty rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf :hasProperty ;
-                       rdfs:domain :Structure ;
+                       rdfs:domain :StructureFOI ;
                        rdfs:range :StructuralProperty .
 
 
@@ -1213,7 +1213,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 :hasStructure rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :hasFeatureOfInterest ;
               rdfs:domain :StructuralObservation ;
-              rdfs:range :Structure .
+              rdfs:range :StructureFOI .
 
 
 ###  http://www.MetroRiskOntology.org#hasTemperatureProperty
@@ -2227,7 +2227,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#AirConditioningUnit
 :AirConditioningUnit rdf:type owl:Class ;
-                     rdfs:subClassOf :Equipment .
+                     rdfs:subClassOf :EquipmentFOI .
 
 
 ###  http://www.MetroRiskOntology.org#AirQualitySensor
@@ -2241,7 +2241,12 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 
 ###  http://www.MetroRiskOntology.org#Alarm
-:Alarm rdf:type owl:Class .
+:Alarm rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :detectedByObservation ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Observation
+                       ] .
 
 
 ###  http://www.MetroRiskOntology.org#AngularVelocity
@@ -2254,9 +2259,9 @@ xsd:dateTime owl:equivalentClass xsd:string .
                            rdfs:subClassOf :StructuralObservation .
 
 
-###  http://www.MetroRiskOntology.org#Area
-:Area rdf:type owl:Class ;
-      rdfs:subClassOf :FeatureOfInterest .
+###  http://www.MetroRiskOntology.org#AreaFOI
+:AreaFOI rdf:type owl:Class ;
+         rdfs:subClassOf :FeatureOfInterest .
 
 
 ###  http://www.MetroRiskOntology.org#CO2Concentration
@@ -2271,12 +2276,12 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#CanopyColumn
 :CanopyColumn rdf:type owl:Class ;
-              rdfs:subClassOf :Structure .
+              rdfs:subClassOf :StructureFOI .
 
 
 ###  http://www.MetroRiskOntology.org#ConnectionNode
 :ConnectionNode rdf:type owl:Class ;
-                rdfs:subClassOf :Structure .
+                rdfs:subClassOf :StructureFOI .
 
 
 ###  http://www.MetroRiskOntology.org#CrackOpeningDisplacement
@@ -2356,7 +2361,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#DistributionBox
 :DistributionBox rdf:type owl:Class ;
-                 rdfs:subClassOf :Equipment .
+                 rdfs:subClassOf :EquipmentFOI .
 
 
 ###  http://www.MetroRiskOntology.org#ElectricEnergy
@@ -2409,9 +2414,9 @@ xsd:dateTime owl:equivalentClass xsd:string .
                       rdfs:subClassOf :Alarm .
 
 
-###  http://www.MetroRiskOntology.org#Equipment
-:Equipment rdf:type owl:Class ;
-           rdfs:subClassOf :FeatureOfInterest .
+###  http://www.MetroRiskOntology.org#EquipmentFOI
+:EquipmentFOI rdf:type owl:Class ;
+              rdfs:subClassOf :FeatureOfInterest .
 
 
 ###  http://www.MetroRiskOntology.org#EventObservation
@@ -2421,7 +2426,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#EventProperty
 :EventProperty rdf:type owl:Class ;
-               rdfs:subClassOf :ObservableProperty .
+               rdfs:subClassOf :StructuralProperty .
 
 
 ###  http://www.MetroRiskOntology.org#EventSensors
@@ -2436,21 +2441,29 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#Falling
 :Falling rdf:type owl:Class ;
-         rdfs:subClassOf :EventProperty .
+         rdfs:subClassOf :EventProperty ;
+         owl:disjointWith :Running .
 
 
 ###  http://www.MetroRiskOntology.org#FallingEvent
 :FallingEvent rdf:type owl:Class ;
-              rdfs:subClassOf :EventWarning .
+              rdfs:subClassOf :EventWarning ;
+              owl:disjointWith :RunningEvent .
 
 
 ###  http://www.MetroRiskOntology.org#FallingMonitoring
 :FallingMonitoring rdf:type owl:Class ;
-                   rdfs:subClassOf :EventObservation .
+                   rdfs:subClassOf :EventObservation ;
+                   owl:disjointWith :RunningMonitoring .
 
 
 ###  http://www.MetroRiskOntology.org#FeatureOfInterest
-:FeatureOfInterest rdf:type owl:Class .
+:FeatureOfInterest rdf:type owl:Class ;
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasProperty ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass :ObservableProperty
+                                   ] .
 
 
 ###  http://www.MetroRiskOntology.org#FireSourceLocation
@@ -2485,7 +2498,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#GlassFacadeCable
 :GlassFacadeCable rdf:type owl:Class ;
-                  rdfs:subClassOf :Structure .
+                  rdfs:subClassOf :StructureFOI .
 
 
 ###  http://www.MetroRiskOntology.org#HarmfulGasComponents
@@ -2554,12 +2567,14 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#MachineVisionSensor
 :MachineVisionSensor rdf:type owl:Class ;
-                     rdfs:subClassOf :CrowdFlowSensors .
+                     rdfs:subClassOf :CrowdFlowSensors ;
+                     owl:disjointWith :PeopleCountingSensor .
 
 
 ###  http://www.MetroRiskOntology.org#MaintenanceOverdue
 :MaintenanceOverdue rdf:type owl:Class ;
-                    rdfs:subClassOf :AbnormalStatus .
+                    rdfs:subClassOf :AbnormalStatus ;
+                    owl:disjointWith :NotWorking .
 
 
 ###  http://www.MetroRiskOntology.org#MatchingCurrentTransformer
@@ -2592,7 +2607,38 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 
 ###  http://www.MetroRiskOntology.org#Observation
-:Observation rdf:type owl:Class .
+:Observation rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Class ;
+                               owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasFeatureOfInterest ;
+                                                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass :FeatureOfInterest
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :locatedIn ;
+                                                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass :Location
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :madeBySensor ;
+                                                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass :Sensor
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :observedProperty ;
+                                                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass :ObservableProperty
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ]
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasProblemOf ;
+                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                               owl:onClass :Alarm
+                                             ]
+                                           )
+                             ] .
 
 
 ###  http://www.MetroRiskOntology.org#PM10Concentration
@@ -2647,7 +2693,7 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#Pillar
 :Pillar rdf:type owl:Class ;
-        rdfs:subClassOf :Structure .
+        rdfs:subClassOf :StructureFOI .
 
 
 ###  http://www.MetroRiskOntology.org#PipeTemperature
@@ -2662,7 +2708,7 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#PlatformLevel
 :PlatformLevel rdf:type owl:Class ;
-               rdfs:subClassOf :Area .
+               rdfs:subClassOf :AreaFOI .
 
 
 ###  http://www.MetroRiskOntology.org#Power
@@ -2677,7 +2723,7 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#PumpAssembly
 :PumpAssembly rdf:type owl:Class ;
-              rdfs:subClassOf :Equipment .
+              rdfs:subClassOf :EquipmentFOI .
 
 
 ###  http://www.MetroRiskOntology.org#QueueSize
@@ -2706,7 +2752,33 @@ direction: bidirectional recognition""" .
 
 
 ###  http://www.MetroRiskOntology.org#Sensor
-:Sensor rdf:type owl:Class .
+:Sensor rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Class ;
+                          owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :madeObservation ;
+                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :Observation
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :observes ;
+                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :ObservableProperty
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :locatedIn ;
+                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onClass :Location
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ]
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasAbnormalState ;
+                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass :AbnormalStatus
+                                        ]
+                                      )
+                        ] .
 
 
 ###  http://www.MetroRiskOntology.org#SmokeConcentration
@@ -2726,12 +2798,12 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#StationConcourseLevel
 :StationConcourseLevel rdf:type owl:Class ;
-                       rdfs:subClassOf :Area .
+                       rdfs:subClassOf :AreaFOI .
 
 
 ###  http://www.MetroRiskOntology.org#StationForecourt
 :StationForecourt rdf:type owl:Class ;
-                  rdfs:subClassOf :Area .
+                  rdfs:subClassOf :AreaFOI .
 
 
 ###  http://www.MetroRiskOntology.org#Strain
@@ -2756,7 +2828,7 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#StructuralColumn
 :StructuralColumn rdf:type owl:Class ;
-                  rdfs:subClassOf :Structure .
+                  rdfs:subClassOf :StructureFOI .
 
 
 ###  http://www.MetroRiskOntology.org#StructuralCorrosion
@@ -2804,9 +2876,9 @@ direction: bidirectional recognition""" .
                    rdfs:subClassOf :Alarm .
 
 
-###  http://www.MetroRiskOntology.org#Structure
-:Structure rdf:type owl:Class ;
-           rdfs:subClassOf :FeatureOfInterest .
+###  http://www.MetroRiskOntology.org#StructureFOI
+:StructureFOI rdf:type owl:Class ;
+              rdfs:subClassOf :FeatureOfInterest .
 
 
 ###  http://www.MetroRiskOntology.org#Temperature
@@ -2846,7 +2918,7 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#TransferCorridor
 :TransferCorridor rdf:type owl:Class ;
-                  rdfs:subClassOf :Area .
+                  rdfs:subClassOf :AreaFOI .
 
 
 ###  http://www.MetroRiskOntology.org#TripleAxialTiltAngle
@@ -2861,7 +2933,7 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#Truss
 :Truss rdf:type owl:Class ;
-       rdfs:subClassOf :Structure .
+       rdfs:subClassOf :StructureFOI .
 
 
 ###  http://www.MetroRiskOntology.org#UltrasonicFlowRateSensor
@@ -2896,7 +2968,7 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#WaitingHall
 :WaitingHall rdf:type owl:Class ;
-             rdfs:subClassOf :Area .
+             rdfs:subClassOf :AreaFOI .
 
 
 ###  http://www.MetroRiskOntology.org#WaterDepth
@@ -2945,17 +3017,256 @@ direction: bidirectional recognition""" .
 
 
 #################################################################
-#    Individuals
+#    General axioms
 #################################################################
 
-###  http://www.MetroRiskOntology.org#RS485烟雾传感器001
-:RS485烟雾传感器001 rdf:type owl:NamedIndividual ,
-                        :SmokeSensor .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AbnormalCrack
+                :AbnormalVibration
+                :StructuralCorrosion
+                :StructuralDeformation
+                :StructuralDisplacement
+                :StructuralOverload
+                :StructuralTilt
+              )
+] .
 
 
-###  http://www.MetroRiskOntology.org#DS-2TD6237T-50H4L/W001
-<http://www.MetroRiskOntology.org#DS-2TD6237T-50H4L/W001> rdf:type owl:NamedIndividual ,
-                                                                   :ThermalImagingCamera .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AbnormalHumidity
+                :AbnormalNoise
+                :AbnormalTemperature
+                :AirQualityWarning
+                :FireWarning
+                :FloodWarning
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AbnormalStatus
+                :Alarm
+                :FeatureOfInterest
+                :Location
+                :ObservableProperty
+                :Observation
+                :Sensor
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Acceleration
+                :AngularVelocity
+                :CrackOpeningDisplacement
+                :Displacement
+                :Strain
+                :Stress
+                :TripleAxialTiltAngle
+                :WaterLeakage
+                :XYZVelocity
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AccelerationMonitoring
+                :AngularVelocityMonitoring
+                :CrackOpeningDisplacementMonitoring
+                :DisplacementMonitoring
+                :StrainMonitoring
+                :StressMonitoring
+                :TripleAxialTiltAngleMonitoring
+                :WaterLeakageMonitoring
+                :XYZVelocityMonitoring
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AirConditioningUnit
+                :DistributionBox
+                :PumpAssembly
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AirQualitySensor
+                :HarmfulGasDetector
+                :NoiseSensor
+                :SmokeSensor
+                :TemperatureAndHumiditySensor
+                :ThermalImagingCamera
+                :UltrasonicFlowRateSensor
+                :UltrasonicLevelGauge
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AreaFOI
+                :EquipmentFOI
+                :StructureFOI
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CO2Concentration
+                :FireSourceLocation
+                :FlameTemperature
+                :HarmfulGasComponents
+                :Humidity
+                :NoiseDecibels
+                :PM10Concentration
+                :PM2.5Concentration
+                :SmokeConcentration
+                :Temperature
+                :WaterDepth
+                :WaterFlowVelocity
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CO2Monitoring
+                :FireSourceLocationMonitoring
+                :FlameTemperatureMonitoring
+                :HarmfulGasComponentsMonitoring
+                :HumidityMonitoring
+                :NoiseMonitoring
+                :PM10Monitoring
+                :PM2.5Monitoring
+                :SmokeConcentrationMonitoring
+                :TemperatureMonitoring
+                :WaterDepthMonitoring
+                :WaterFlowVelocityMonitoring
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CanopyColumn
+                :ConnectionNode
+                :GlassFacadeCable
+                :Pillar
+                :StructuralColumn
+                :Truss
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CrowdFlowDirection
+                :CrowdFlowRate
+                :IndividualSpeed
+                :PersonnelDensity
+                :QueueSize
+                :TotalPopulationInTheArea
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CrowdFlowDirectionMonitoring
+                :CrowdFlowRateMonitoring
+                :IndividualSpeedMonitoring
+                :PersonnelDensityMonitoring
+                :QueueSizeMonitoring
+                :TotalPopulationInTheAreaMonitoring
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CrowdFlowObservation
+                :EnergyConsumptionObservation
+                :EnvironmentalObservation
+                :EventObservation
+                :StructuralObservation
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CrowdFlowProperty
+                :EnergyConsumptionProperty
+                :EnvironmentalProperty
+                :EventProperty
+                :StructuralProperty
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CrowdFlowSensors
+                :EnergyConsumptionSensors
+                :EnvironmentalSensors
+                :EventSensors
+                :StructuralSensors
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CrowdFlowWarning
+                :EnergyConsumptionWarning
+                :EnvironmentalWarning
+                :EventWarning
+                :StructuralWarning
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Current
+                :ElectricEnergy
+                :PipeTemperature
+                :Power
+                :Voltage
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CurrentMonitoring
+                :ElectricEnergyMonitoring
+                :PipeTemperatureMonitoring
+                :PowerMonitoring
+                :VoltageMonitoring
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :DigitalCrackMeter
+                :InclinationGauge
+                :LowPowerDisplacementSensor
+                :LowPowerStrainSensor
+                :LowPowerStressSensor
+                :UprightGrapheneSensor
+                :VibrationSensor
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :MatchingCurrentTransformer
+                :TemperatureSensor
+                :WirelessMeteringMeter
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :PlatformLevel
+                :StationConcourseLevel
+                :StationForecourt
+                :TransferCorridor
+                :WaitingHall
+              )
+] .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
