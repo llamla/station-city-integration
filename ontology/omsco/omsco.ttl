@@ -3045,24 +3045,6 @@ sosa:Sensor rdf:type owl:Class ;
                             ] .
 
 
-#################################################################
-#    Individuals
-#################################################################
-
-###  http://www.MetroRiskOntology.org#RS485烟雾传感器001
-:RS485烟雾传感器001 rdf:type owl:NamedIndividual ,
-                        :SmokeSensor .
-
-
-###  http://www.MetroRiskOntology.org#TransferCorridor
-:TransferCorridor rdf:type owl:NamedIndividual ,
-                           :TransferCorridor .
-
-
-###  http://www.MetroRiskOntology.org#DS-2TD6237T-50H4L/W001
-<http://www.MetroRiskOntology.org#DS-2TD6237T-50H4L/W001> rdf:type owl:NamedIndividual ,
-                                                                   :ThermalImagingCamera .
-
 
 #################################################################
 #    General axioms
