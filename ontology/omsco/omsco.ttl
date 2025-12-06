@@ -1,4 +1,5 @@
 @prefix : <http://www.MetroRiskOntology.org#> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix ssn: <http://www.w3.org/ns/ssn/> .
@@ -8,7 +9,8 @@
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @base <http://www.MetroRiskOntology.org> .
 
-<http://www.MetroRiskOntology.org> rdf:type owl:Ontology .
+<http://www.MetroRiskOntology.org> rdf:type owl:Ontology ;
+                                    owl:imports <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> .
 
 #################################################################
 #    Datatypes
@@ -52,7 +54,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#ObservedCrowdFlow
 :ObservedCrowdFlow rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :observedProperty ;
+                   rdfs:subPropertyOf sosa:observedProperty ;
                    rdfs:domain :CrowdFlowObservation ;
                    rdfs:range :CrowdFlowProperty .
 
@@ -94,21 +96,21 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#ObservedEnergyConsumption
 :ObservedEnergyConsumption rdf:type owl:ObjectProperty ;
-                           rdfs:subPropertyOf :observedProperty ;
+                           rdfs:subPropertyOf sosa:observedProperty ;
                            rdfs:domain :EnergyConsumptionObservation ;
                            rdfs:range :EnergyConsumptionProperty .
 
 
 ###  http://www.MetroRiskOntology.org#ObservedEnvironment
 :ObservedEnvironment rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf :observedProperty ;
+                     rdfs:subPropertyOf sosa:observedProperty ;
                      rdfs:domain :EnvironmentalObservation ;
                      rdfs:range :EnvironmentalProperty .
 
 
 ###  http://www.MetroRiskOntology.org#ObservedEvent
 :ObservedEvent rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :observedProperty ;
+               rdfs:subPropertyOf sosa:observedProperty ;
                rdfs:domain :EventObservation ;
                rdfs:range :EventProperty .
 
@@ -234,7 +236,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#ObservedStructure
 :ObservedStructure rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :observedProperty ;
+                   rdfs:subPropertyOf sosa:observedProperty ;
                    rdfs:domain :StructuralObservation ;
                    rdfs:range :StructuralProperty .
 
@@ -429,7 +431,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 ###  http://www.MetroRiskOntology.org#detectedByObservation
 :detectedByObservation rdf:type owl:ObjectProperty ;
                        rdfs:domain :Alarm ;
-                       rdfs:range :Observation .
+                       rdfs:range sosa:Observation .
 
 
 ###  http://www.MetroRiskOntology.org#detectedByPM10Monitoring
@@ -599,7 +601,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#hasAbnormalState
 :hasAbnormalState rdf:type owl:ObjectProperty ;
-                  rdfs:domain :Sensor ;
+                  rdfs:domain sosa:Sensor ;
                   rdfs:range :AbnormalStatus .
 
 
@@ -660,7 +662,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#hasArea
 :hasArea rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf :hasFeatureOfInterest ;
+         rdfs:subPropertyOf sosa:hasFeatureOfInterest ;
          rdfs:domain :CrowdFlowObservation ,
                      :EnvironmentalObservation ,
                      :EventObservation ;
@@ -723,7 +725,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#hasCrowdFlowProperty
 :hasCrowdFlowProperty rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf :hasProperty ;
+                      rdfs:subPropertyOf ssn:hasProperty ;
                       rdfs:domain :AreaFOI ;
                       rdfs:range :CrowdFlowProperty .
 
@@ -782,7 +784,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#hasEnergyConsumptionProperty
 :hasEnergyConsumptionProperty rdf:type owl:ObjectProperty ;
-                              rdfs:subPropertyOf :hasProperty ;
+                              rdfs:subPropertyOf ssn:hasProperty ;
                               rdfs:domain :EquipmentFOI ;
                               rdfs:range :EnergyConsumptionProperty .
 
@@ -796,14 +798,14 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#hasEnvironmentalProperty
 :hasEnvironmentalProperty rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf :hasProperty ;
+                          rdfs:subPropertyOf ssn:hasProperty ;
                           rdfs:domain :AreaFOI ;
                           rdfs:range :EnvironmentalProperty .
 
 
 ###  http://www.MetroRiskOntology.org#hasEquipment
 :hasEquipment rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :hasFeatureOfInterest ;
+              rdfs:subPropertyOf sosa:hasFeatureOfInterest ;
               rdfs:domain :EnergyConsumptionObservation ;
               rdfs:range :EquipmentFOI .
 
@@ -817,7 +819,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#hasEventProperty
 :hasEventProperty rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf :hasProperty ;
+                  rdfs:subPropertyOf ssn:hasProperty ;
                   rdfs:domain :AreaFOI ;
                   rdfs:range :EventProperty .
 
@@ -836,12 +838,6 @@ xsd:dateTime owl:equivalentClass xsd:string .
                                 :TransferCorridor ,
                                 :WaitingHall ;
                     rdfs:range :Falling .
-
-
-###  http://www.MetroRiskOntology.org#hasFeatureOfInterest
-:hasFeatureOfInterest rdf:type owl:ObjectProperty ;
-                      rdfs:domain :Observation ;
-                      rdfs:range :FeatureOfInterest .
 
 
 ###  http://www.MetroRiskOntology.org#hasFireSourceLocationProperty
@@ -1063,14 +1059,8 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#hasProblemOf
 :hasProblemOf rdf:type owl:ObjectProperty ;
-              rdfs:domain :Observation ;
+              rdfs:domain sosa:Observation ;
               rdfs:range :Alarm .
-
-
-###  http://www.MetroRiskOntology.org#hasProperty
-:hasProperty rdf:type owl:ObjectProperty ;
-             rdfs:domain :FeatureOfInterest ;
-             rdfs:range :ObservableProperty .
 
 
 ###  http://www.MetroRiskOntology.org#hasPumpAssembly
@@ -1197,7 +1187,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#hasStructuralProperty
 :hasStructuralProperty rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf :hasProperty ;
+                       rdfs:subPropertyOf ssn:hasProperty ;
                        rdfs:domain :StructureFOI ;
                        rdfs:range :StructuralProperty .
 
@@ -1211,7 +1201,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#hasStructure
 :hasStructure rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :hasFeatureOfInterest ;
+              rdfs:subPropertyOf sosa:hasFeatureOfInterest ;
               rdfs:domain :StructuralObservation ;
               rdfs:range :StructureFOI .
 
@@ -1351,7 +1341,6 @@ xsd:dateTime owl:equivalentClass xsd:string .
                        :NoiseSensor ,
                        :PanoramicCamera ,
                        :PeopleCountingSensor ,
-                       :Sensor ,
                        :SmokeSensor ,
                        :StructuralSensors ,
                        :TemperatureAndHumiditySensor ,
@@ -1361,7 +1350,8 @@ xsd:dateTime owl:equivalentClass xsd:string .
                        :UltrasonicLevelGauge ,
                        :UprightGrapheneSensor ,
                        :VibrationSensor ,
-                       :WirelessMeteringMeter ;
+                       :WirelessMeteringMeter ,
+                       sosa:Sensor ;
            rdfs:range :Location .
 
 
@@ -1390,7 +1380,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#madeByCrowdFlowSensor
 :madeByCrowdFlowSensor rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf :madeBySensor ;
+                       rdfs:subPropertyOf sosa:madeBySensor ;
                        rdfs:domain :CrowdFlowObservation ;
                        rdfs:range :CrowdFlowSensors .
 
@@ -1404,21 +1394,21 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#madeByEnergyConsumptionSensor
 :madeByEnergyConsumptionSensor rdf:type owl:ObjectProperty ;
-                               rdfs:subPropertyOf :madeBySensor ;
+                               rdfs:subPropertyOf sosa:madeBySensor ;
                                rdfs:domain :EnergyConsumptionObservation ;
                                rdfs:range :EnergyConsumptionSensors .
 
 
 ###  http://www.MetroRiskOntology.org#madeByEnvironmentalSensor
 :madeByEnvironmentalSensor rdf:type owl:ObjectProperty ;
-                           rdfs:subPropertyOf :madeBySensor ;
+                           rdfs:subPropertyOf sosa:madeBySensor ;
                            rdfs:domain :EnvironmentalObservation ;
                            rdfs:range :EnvironmentalSensors .
 
 
 ###  http://www.MetroRiskOntology.org#madeByEventSensor
 :madeByEventSensor rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :madeBySensor ;
+                   rdfs:subPropertyOf sosa:madeBySensor ;
                    rdfs:domain :EventObservation ;
                    rdfs:range :EventSensors .
 
@@ -1498,12 +1488,6 @@ xsd:dateTime owl:equivalentClass xsd:string .
                             rdfs:range :PeopleCountingSensor .
 
 
-###  http://www.MetroRiskOntology.org#madeBySensor
-:madeBySensor rdf:type owl:ObjectProperty ;
-              rdfs:domain :Observation ;
-              rdfs:range :Sensor .
-
-
 ###  http://www.MetroRiskOntology.org#madeBySmokeSensor
 :madeBySmokeSensor rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf :madeByEnvironmentalSensor ;
@@ -1513,7 +1497,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#madeByStructuralSensor
 :madeByStructuralSensor rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf :madeBySensor ;
+                        rdfs:subPropertyOf sosa:madeBySensor ;
                         rdfs:domain :StructuralObservation ;
                         rdfs:range :StructuralSensors .
 
@@ -1603,7 +1587,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#madeCrowdFlowObservation
 :madeCrowdFlowObservation rdf:type owl:ObjectProperty ;
-                          rdfs:subPropertyOf :madeObservation ;
+                          rdfs:subPropertyOf sosa:madeObservation ;
                           rdfs:domain :CrowdFlowSensors ;
                           rdfs:range :CrowdFlowObservation .
 
@@ -1638,21 +1622,21 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#madeEnergyConsumptionObservation
 :madeEnergyConsumptionObservation rdf:type owl:ObjectProperty ;
-                                  rdfs:subPropertyOf :madeObservation ;
+                                  rdfs:subPropertyOf sosa:madeObservation ;
                                   rdfs:domain :EnergyConsumptionSensors ;
                                   rdfs:range :EnergyConsumptionObservation .
 
 
 ###  http://www.MetroRiskOntology.org#madeEnvironmentalObservation
 :madeEnvironmentalObservation rdf:type owl:ObjectProperty ;
-                              rdfs:subPropertyOf :madeObservation ;
+                              rdfs:subPropertyOf sosa:madeObservation ;
                               rdfs:domain :EnvironmentalSensors ;
                               rdfs:range :EnvironmentalObservation .
 
 
 ###  http://www.MetroRiskOntology.org#madeEventObservation
 :madeEventObservation rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf :madeObservation ;
+                      rdfs:subPropertyOf sosa:madeObservation ;
                       rdfs:domain :EventSensors ;
                       rdfs:range :EventObservation .
 
@@ -1704,12 +1688,6 @@ xsd:dateTime owl:equivalentClass xsd:string .
                       rdfs:subPropertyOf :madeEnvironmentalObservation ;
                       rdfs:domain :NoiseSensor ;
                       rdfs:range :NoiseMonitoring .
-
-
-###  http://www.MetroRiskOntology.org#madeObservation
-:madeObservation rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Sensor ;
-                 rdfs:range :Observation .
 
 
 ###  http://www.MetroRiskOntology.org#madePM10Observation
@@ -1784,7 +1762,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#madeStructuralObservation
 :madeStructuralObservation rdf:type owl:ObjectProperty ;
-                           rdfs:subPropertyOf :madeObservation ;
+                           rdfs:subPropertyOf sosa:madeObservation ;
                            rdfs:domain :StructuralSensors ;
                            rdfs:range :StructuralObservation .
 
@@ -1845,18 +1823,6 @@ xsd:dateTime owl:equivalentClass xsd:string .
                             rdfs:range :XYZVelocityMonitoring .
 
 
-###  http://www.MetroRiskOntology.org#observedProperty
-:observedProperty rdf:type owl:ObjectProperty ;
-                  rdfs:domain :Observation ;
-                  rdfs:range :ObservableProperty .
-
-
-###  http://www.MetroRiskOntology.org#observes
-:observes rdf:type owl:ObjectProperty ;
-          rdfs:domain :Sensor ;
-          rdfs:range :ObservableProperty .
-
-
 ###  http://www.MetroRiskOntology.org#observesAcceleration
 :observesAcceleration rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf :observesStructure ;
@@ -1887,7 +1853,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#observesCrowdFlow
 :observesCrowdFlow rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :observes ;
+                   rdfs:subPropertyOf sosa:observes ;
                    rdfs:domain :CrowdFlowSensors ;
                    rdfs:range :CrowdFlowProperty .
 
@@ -1929,21 +1895,21 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#observesEnergyConsumption
 :observesEnergyConsumption rdf:type owl:ObjectProperty ;
-                           rdfs:subPropertyOf :observes ;
+                           rdfs:subPropertyOf sosa:observes ;
                            rdfs:domain :EnergyConsumptionSensors ;
                            rdfs:range :EnergyConsumptionProperty .
 
 
 ###  http://www.MetroRiskOntology.org#observesEnvironment
 :observesEnvironment rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf :observes ;
+                     rdfs:subPropertyOf sosa:observes ;
                      rdfs:domain :EnvironmentalSensors ;
                      rdfs:range :EnvironmentalProperty .
 
 
 ###  http://www.MetroRiskOntology.org#observesEvent
 :observesEvent rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :observes ;
+               rdfs:subPropertyOf sosa:observes ;
                rdfs:domain :EventSensors ;
                rdfs:range :EventProperty .
 
@@ -2069,7 +2035,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#observesStructure
 :observesStructure rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :observes ;
+                   rdfs:subPropertyOf sosa:observes ;
                    rdfs:domain :StructuralSensors ;
                    rdfs:range :StructuralProperty .
 
@@ -2130,50 +2096,86 @@ xsd:dateTime owl:equivalentClass xsd:string .
                      rdfs:range :XYZVelocity .
 
 
+###  http://www.w3.org/ns/sosa/hasFeatureOfInterest
+sosa:hasFeatureOfInterest rdf:type owl:ObjectProperty ;
+                          rdfs:domain sosa:Observation ;
+                          rdfs:range sosa:FeatureOfInterest .
+
+
+###  http://www.w3.org/ns/sosa/madeBySensor
+sosa:madeBySensor rdf:type owl:ObjectProperty ;
+                  rdfs:domain sosa:Observation ;
+                  rdfs:range sosa:Sensor .
+
+
+###  http://www.w3.org/ns/sosa/madeObservation
+sosa:madeObservation rdf:type owl:ObjectProperty ;
+                     rdfs:domain sosa:Sensor ;
+                     rdfs:range sosa:Observation .
+
+
+###  http://www.w3.org/ns/sosa/observedProperty
+sosa:observedProperty rdf:type owl:ObjectProperty ;
+                      rdfs:domain sosa:Observation ;
+                      rdfs:range sosa:ObservableProperty .
+
+
+###  http://www.w3.org/ns/sosa/observes
+sosa:observes rdf:type owl:ObjectProperty ;
+              rdfs:domain sosa:Sensor ;
+              rdfs:range sosa:ObservableProperty .
+
+
+###  http://www.w3.org/ns/ssn/hasProperty
+ssn:hasProperty rdf:type owl:ObjectProperty ;
+                rdfs:domain sosa:FeatureOfInterest ;
+                rdfs:range sosa:ObservableProperty .
+
+
 #################################################################
 #    Data properties
 #################################################################
 
 ###  http://www.MetroRiskOntology.org#hasAlarm
 :hasAlarm rdf:type owl:DatatypeProperty ;
-          rdfs:domain :Observation ;
+          rdfs:domain sosa:Observation ;
           rdfs:range xsd:int .
 
 
 ###  http://www.MetroRiskOntology.org#hasSimpleResult
 :hasSimpleResult rdf:type owl:DatatypeProperty ;
-                 rdfs:domain :Observation ;
+                 rdfs:domain sosa:Observation ;
                  rdfs:range xsd:string .
 
 
 ###  http://www.MetroRiskOntology.org#lastMaintenanceTime
 :lastMaintenanceTime rdf:type owl:DatatypeProperty ;
-                     rdfs:domain :Sensor ;
+                     rdfs:domain sosa:Sensor ;
                      rdfs:range xsd:dateTime .
 
 
 ###  http://www.MetroRiskOntology.org#maintenanceCycle
 :maintenanceCycle rdf:type owl:DatatypeProperty ;
-                  rdfs:domain :Sensor ;
+                  rdfs:domain sosa:Sensor ;
                   rdfs:range xsd:float .
 
 
 ###  http://www.MetroRiskOntology.org#operationalState
 :operationalState rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:domain :Sensor ;
+                  rdfs:domain sosa:Sensor ;
                   rdfs:range xsd:string .
 
 
 ###  http://www.MetroRiskOntology.org#resultTime
 :resultTime rdf:type owl:DatatypeProperty ;
-            rdfs:domain :Observation ;
+            rdfs:domain sosa:Observation ;
             rdfs:range xsd:dateTime .
 
 
 ###  http://www.MetroRiskOntology.org#valueUnit
 :valueUnit rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Observation ;
+           rdfs:domain sosa:Observation ;
            rdfs:range xsd:string .
 
 
@@ -2202,7 +2204,8 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 
 ###  http://www.MetroRiskOntology.org#AbnormalStatus
-:AbnormalStatus rdf:type owl:Class .
+:AbnormalStatus rdf:type owl:Class ;
+                rdfs:subClassOf dul:Situation .
 
 
 ###  http://www.MetroRiskOntology.org#AbnormalTemperature
@@ -2242,10 +2245,11 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#Alarm
 :Alarm rdf:type owl:Class ;
-       rdfs:subClassOf [ rdf:type owl:Restriction ;
+       rdfs:subClassOf dul:Situation ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :detectedByObservation ;
                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Observation
+                         owl:onClass sosa:Observation
                        ] .
 
 
@@ -2261,7 +2265,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#AreaFOI
 :AreaFOI rdf:type owl:Class ;
-         rdfs:subClassOf :FeatureOfInterest .
+         rdfs:subClassOf sosa:FeatureOfInterest .
 
 
 ###  http://www.MetroRiskOntology.org#CO2Concentration
@@ -2306,12 +2310,12 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#CrowdFlowObservation
 :CrowdFlowObservation rdf:type owl:Class ;
-                      rdfs:subClassOf :Observation .
+                      rdfs:subClassOf sosa:Observation .
 
 
 ###  http://www.MetroRiskOntology.org#CrowdFlowProperty
 :CrowdFlowProperty rdf:type owl:Class ;
-                   rdfs:subClassOf :ObservableProperty .
+                   rdfs:subClassOf sosa:ObservableProperty .
 
 
 ###  http://www.MetroRiskOntology.org#CrowdFlowRate
@@ -2326,7 +2330,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#CrowdFlowSensors
 :CrowdFlowSensors rdf:type owl:Class ;
-                  rdfs:subClassOf :Sensor .
+                  rdfs:subClassOf sosa:Sensor .
 
 
 ###  http://www.MetroRiskOntology.org#CrowdFlowWarning
@@ -2376,17 +2380,17 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#EnergyConsumptionObservation
 :EnergyConsumptionObservation rdf:type owl:Class ;
-                              rdfs:subClassOf :Observation .
+                              rdfs:subClassOf sosa:Observation .
 
 
 ###  http://www.MetroRiskOntology.org#EnergyConsumptionProperty
 :EnergyConsumptionProperty rdf:type owl:Class ;
-                           rdfs:subClassOf :ObservableProperty .
+                           rdfs:subClassOf sosa:ObservableProperty .
 
 
 ###  http://www.MetroRiskOntology.org#EnergyConsumptionSensors
 :EnergyConsumptionSensors rdf:type owl:Class ;
-                          rdfs:subClassOf :Sensor .
+                          rdfs:subClassOf sosa:Sensor .
 
 
 ###  http://www.MetroRiskOntology.org#EnergyConsumptionWarning
@@ -2396,17 +2400,17 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#EnvironmentalObservation
 :EnvironmentalObservation rdf:type owl:Class ;
-                          rdfs:subClassOf :Observation .
+                          rdfs:subClassOf sosa:Observation .
 
 
 ###  http://www.MetroRiskOntology.org#EnvironmentalProperty
 :EnvironmentalProperty rdf:type owl:Class ;
-                       rdfs:subClassOf :ObservableProperty .
+                       rdfs:subClassOf sosa:ObservableProperty .
 
 
 ###  http://www.MetroRiskOntology.org#EnvironmentalSensors
 :EnvironmentalSensors rdf:type owl:Class ;
-                      rdfs:subClassOf :Sensor .
+                      rdfs:subClassOf sosa:Sensor .
 
 
 ###  http://www.MetroRiskOntology.org#EnvironmentalWarning
@@ -2416,12 +2420,12 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#EquipmentFOI
 :EquipmentFOI rdf:type owl:Class ;
-              rdfs:subClassOf :FeatureOfInterest .
+              rdfs:subClassOf sosa:FeatureOfInterest .
 
 
 ###  http://www.MetroRiskOntology.org#EventObservation
 :EventObservation rdf:type owl:Class ;
-                  rdfs:subClassOf :Observation .
+                  rdfs:subClassOf sosa:Observation .
 
 
 ###  http://www.MetroRiskOntology.org#EventProperty
@@ -2431,7 +2435,7 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 ###  http://www.MetroRiskOntology.org#EventSensors
 :EventSensors rdf:type owl:Class ;
-              rdfs:subClassOf :Sensor .
+              rdfs:subClassOf sosa:Sensor .
 
 
 ###  http://www.MetroRiskOntology.org#EventWarning
@@ -2455,15 +2459,6 @@ xsd:dateTime owl:equivalentClass xsd:string .
 :FallingMonitoring rdf:type owl:Class ;
                    rdfs:subClassOf :EventObservation ;
                    owl:disjointWith :RunningMonitoring .
-
-
-###  http://www.MetroRiskOntology.org#FeatureOfInterest
-:FeatureOfInterest rdf:type owl:Class ;
-                   rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                     owl:onProperty :hasProperty ;
-                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                     owl:onClass :ObservableProperty
-                                   ] .
 
 
 ###  http://www.MetroRiskOntology.org#FireSourceLocation
@@ -2547,7 +2542,8 @@ xsd:dateTime owl:equivalentClass xsd:string .
 
 
 ###  http://www.MetroRiskOntology.org#Location
-:Location rdf:type owl:Class .
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf dul:PhysicalPlace .
 
 
 ###  http://www.MetroRiskOntology.org#LowPowerDisplacementSensor
@@ -2600,45 +2596,6 @@ xsd:dateTime owl:equivalentClass xsd:string .
 ###  http://www.MetroRiskOntology.org#NotWorking
 :NotWorking rdf:type owl:Class ;
             rdfs:subClassOf :AbnormalStatus .
-
-
-###  http://www.MetroRiskOntology.org#ObservableProperty
-:ObservableProperty rdf:type owl:Class .
-
-
-###  http://www.MetroRiskOntology.org#Observation
-:Observation rdf:type owl:Class ;
-             rdfs:subClassOf [ rdf:type owl:Class ;
-                               owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :hasFeatureOfInterest ;
-                                                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                      owl:onClass :FeatureOfInterest
-                                                                    ]
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :locatedIn ;
-                                                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                      owl:onClass :Location
-                                                                    ]
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :madeBySensor ;
-                                                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                      owl:onClass :Sensor
-                                                                    ]
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty :observedProperty ;
-                                                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                      owl:onClass :ObservableProperty
-                                                                    ]
-                                                                  ) ;
-                                               rdf:type owl:Class
-                                             ]
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty :hasProblemOf ;
-                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                               owl:onClass :Alarm
-                                             ]
-                                           )
-                             ] .
 
 
 ###  http://www.MetroRiskOntology.org#PM10Concentration
@@ -2751,36 +2708,6 @@ direction: bidirectional recognition""" .
                    rdfs:subClassOf :EventObservation .
 
 
-###  http://www.MetroRiskOntology.org#Sensor
-:Sensor rdf:type owl:Class ;
-        rdfs:subClassOf [ rdf:type owl:Class ;
-                          owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :madeObservation ;
-                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :Observation
-                                                               ]
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :observes ;
-                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :ObservableProperty
-                                                               ]
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty :locatedIn ;
-                                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                                 owl:onClass :Location
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ]
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :hasAbnormalState ;
-                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :AbnormalStatus
-                                        ]
-                                      )
-                        ] .
-
-
 ###  http://www.MetroRiskOntology.org#SmokeConcentration
 :SmokeConcentration rdf:type owl:Class ;
                     rdfs:subClassOf :EnvironmentalProperty .
@@ -2848,7 +2775,7 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#StructuralObservation
 :StructuralObservation rdf:type owl:Class ;
-                       rdfs:subClassOf :Observation .
+                       rdfs:subClassOf sosa:Observation .
 
 
 ###  http://www.MetroRiskOntology.org#StructuralOverload
@@ -2858,12 +2785,12 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#StructuralProperty
 :StructuralProperty rdf:type owl:Class ;
-                    rdfs:subClassOf :ObservableProperty .
+                    rdfs:subClassOf sosa:ObservableProperty .
 
 
 ###  http://www.MetroRiskOntology.org#StructuralSensors
 :StructuralSensors rdf:type owl:Class ;
-                   rdfs:subClassOf :Sensor .
+                   rdfs:subClassOf sosa:Sensor .
 
 
 ###  http://www.MetroRiskOntology.org#StructuralTilt
@@ -2878,7 +2805,7 @@ direction: bidirectional recognition""" .
 
 ###  http://www.MetroRiskOntology.org#StructureFOI
 :StructureFOI rdf:type owl:Class ;
-              rdfs:subClassOf :FeatureOfInterest .
+              rdfs:subClassOf sosa:FeatureOfInterest .
 
 
 ###  http://www.MetroRiskOntology.org#Temperature
@@ -3016,6 +2943,127 @@ direction: bidirectional recognition""" .
                        rdfs:subClassOf :StructuralObservation .
 
 
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event
+dul:Event rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Object
+dul:Object rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalPlace
+dul:PhysicalPlace rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality
+dul:Quality rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation
+dul:Situation rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/FeatureOfInterest
+sosa:FeatureOfInterest rdf:type owl:Class ;
+                       rdfs:subClassOf dul:Object ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ssn:hasProperty ;
+                                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass sosa:ObservableProperty
+                                       ] .
+
+
+###  http://www.w3.org/ns/sosa/ObservableProperty
+sosa:ObservableProperty rdf:type owl:Class ;
+                        rdfs:subClassOf dul:Quality .
+
+
+###  http://www.w3.org/ns/sosa/Observation
+sosa:Observation rdf:type owl:Class ;
+                 rdfs:subClassOf dul:Event ,
+                                 [ rdf:type owl:Class ;
+                                   owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty :locatedIn ;
+                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                          owl:onClass :Location
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty sosa:hasFeatureOfInterest ;
+                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                          owl:onClass sosa:FeatureOfInterest
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty sosa:madeBySensor ;
+                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                          owl:onClass sosa:Sensor
+                                                                        ]
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty sosa:observedProperty ;
+                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                          owl:onClass sosa:ObservableProperty
+                                                                        ]
+                                                                      ) ;
+                                                   rdf:type owl:Class
+                                                 ]
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasProblemOf ;
+                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                   owl:onClass :Alarm
+                                                 ]
+                                               )
+                                 ] .
+
+
+###  http://www.w3.org/ns/sosa/Sensor
+sosa:Sensor rdf:type owl:Class ;
+            rdfs:subClassOf dul:Object ,
+                            [ rdf:type owl:Class ;
+                              owl:unionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty sosa:madeObservation ;
+                                                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                     owl:onClass sosa:Observation
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty sosa:observes ;
+                                                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                     owl:onClass sosa:ObservableProperty
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :locatedIn ;
+                                                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                     owl:onClass :Location
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ]
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasAbnormalState ;
+                                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                              owl:onClass :AbnormalStatus
+                                            ]
+                                          )
+                            ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.MetroRiskOntology.org#RS485烟雾传感器001
+:RS485烟雾传感器001 rdf:type owl:NamedIndividual ,
+                        :SmokeSensor .
+
+
+###  http://www.MetroRiskOntology.org#TransferCorridor
+:TransferCorridor rdf:type owl:NamedIndividual ,
+                           :TransferCorridor .
+
+
+###  http://www.MetroRiskOntology.org#DS-2TD6237T-50H4L/W001
+<http://www.MetroRiskOntology.org#DS-2TD6237T-50H4L/W001> rdf:type owl:NamedIndividual ,
+                                                                   :ThermalImagingCamera .
+
+
 #################################################################
 #    General axioms
 #################################################################
@@ -3046,11 +3094,11 @@ direction: bidirectional recognition""" .
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :AbnormalStatus
                 :Alarm
-                :FeatureOfInterest
                 :Location
-                :ObservableProperty
-                :Observation
-                :Sensor
+                sosa:FeatureOfInterest
+                sosa:ObservableProperty
+                sosa:Observation
+                sosa:Sensor
               )
 ] .
 
